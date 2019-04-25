@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         randomDiceIndex2 = Int.random(in: 1...6)
         
         var number_1 = "\(ramdomDiceIndex1)"
-        var number_2 = "\(randomDiceIndex2)"  // same as String.valueOf(int) in java
+        var number_2 = "\(randomDiceIndex2)"
         
         var dice1 = "dice"+number_1
         var dice2 = "dice"+number_2
