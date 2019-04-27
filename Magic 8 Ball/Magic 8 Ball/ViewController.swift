@@ -5,7 +5,6 @@
 //  Created by Chan Jung on 4/27/19.
 //  Copyright © 2019 Chan Jung. All rights reserved.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -33,6 +32,4 @@ class ViewController: UIViewController {
     }  // generalize a randomized int and convert it to string
         // and then truncate it to "ball" so it can change the
         // image accordningly
-
 }
-
