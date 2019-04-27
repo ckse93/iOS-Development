@@ -26,16 +26,15 @@ class ViewController: UIViewController {
             updateDiceImages()
     }
 
-
     @IBAction func rollButtonPressed(_ sender: UIButton) {
         updateDiceImages()
     }
     
     func updateDiceImages() {
-        ramdomDiceIndex1 = Int.random(in: 1...6)
+        ramdomDiceIndex1 = Int.random(in: 1...6)  // random number generator 
         randomDiceIndex2 = Int.random(in: 1...6)
         
-        var number_1 = "\(ramdomDiceIndex1)"
+        var number_1 = "\(ramdomDiceIndex1)"  // converting number into string 
         var number_2 = "\(randomDiceIndex2)"
         
         var dice1 = "dice"+number_1
