@@ -18,7 +18,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    @IBAction func AskButtonPressed(_ sender: Any) {
+    }
+    func answer() {
+        
+    }
 
 
 }
