@@ -10,20 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var answerArray : Array = ["yes", "no", "follow your heart", "don't follow your heart", "think twice"]
-    var answerInex = 0
+    @IBOutlet weak var viewer: UIImageView!
+    var ball = "ball"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        answer()
+    }  // when device shaken, this will called
+    
     @IBAction func AskButtonPressed(_ sender: Any) {
+        answer()
     }
+    
     func answer() {
-        
-    }
-
+        var number = Int.random(in: 1...5)
+        var ball_number = ball+"\(number)"
+        viewer.image = UIImage(named: ball_number)
+    }  // generalize a randomized int and convert it to string
+        // and then truncate it to "ball" so it can change the
+        // image accordningly
 
 }
 
