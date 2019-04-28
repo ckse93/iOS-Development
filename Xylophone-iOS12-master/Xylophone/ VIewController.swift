@@ -18,9 +18,7 @@ class ViewController: UIViewController{
 
 
     @IBAction func notePressed(_ sender: UIButton) {
-        
-        
-        
+        print (sender.tag)  // track down which one was the signal from, returns the tag 
     }
     
   
