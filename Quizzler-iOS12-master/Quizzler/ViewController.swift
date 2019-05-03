@@ -32,8 +32,10 @@ class ViewController: UIViewController {
     @IBAction func answerPressed(_ sender: AnyObject) {
         if (sender.tag == 1) {
             pickedAnswer = true
+            print ("answerPressed - you chose true")
         } else {
             pickedAnswer = false
+            print ("answerPressed - you chose true")
         }
         checkAnswer()
         updateUI()
@@ -42,17 +44,22 @@ class ViewController: UIViewController {
     
     func updateUI() {
          if (i < allQuestion.list.count) {
+            print ("updateUI : "+"\(i)")
             questionLabel.text = allQuestion.list[i].questionText
             progressLabel.text = "\(i)"
             nextQuestion()
          } else {
-            return
+            startOver()
         }
     }
     
 
     func nextQuestion() {
+        print("next")
         i+=1
+        if i >= 12 {
+            i = 0
+        }
     }
     
     
@@ -73,6 +80,7 @@ class ViewController: UIViewController {
     
     
     func startOver() {
-       
+        i = 0
+        updateUI()
     }
 }
