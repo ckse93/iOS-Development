@@ -35,13 +35,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var storyTextView: UILabel!
     
     // TODO Step 5: Initialise instance variables here
-    
+    var storyIndex = 0
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        storyTextView.text = story1
         
         // TODO Step 3: Set the text for the storyTextView, topButton, bottomButton, and to T1_Story, T1_Ans1, and T1_Ans2
         
