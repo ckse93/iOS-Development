@@ -38,6 +38,7 @@ class ViewController: UIViewController {
             print ("answerPressed - you chose true")
         }
         checkAnswer()
+        
         updateUI()
     }
     
@@ -57,8 +58,15 @@ class ViewController: UIViewController {
     func nextQuestion() {
         print("next")
         i+=1
-        if i >= 12 {
-            i = 0
+        if i >= allQuestion.list.count+1 {
+            let endAlert = UIAlertController(title: "Quiz Done", message: "Do you want to start over?", preferredStyle: .alert)  // making alert popup variable
+            let restartAction = UIAlertAction(title: "restart", style: .default) { (UIAlertAction) in
+                self.startOver()
+            }  // make a button in the endAlert to do what to do
+            
+            endAlert.addAction(restartAction)
+            
+            present(endAlert, animated: true, completion: nil)
         }
     }
     
@@ -73,8 +81,6 @@ class ViewController: UIViewController {
                 print("wrong")
             }
             print (i)
-        } else {
-            startOver()
         }
     }
     
