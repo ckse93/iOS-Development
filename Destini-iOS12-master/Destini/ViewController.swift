@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         bottomButton.setTitle(answer1b, for: .normal)
         storyIndex = 1
         indexViewer()
+        startOverButton.isHidden = true
         // TODO Step 3: Set the text for the storyTextView, topButton, bottomButton, and to T1_Story, T1_Ans1, and T1_Ans2
         
     }
@@ -54,8 +55,13 @@ class ViewController: UIViewController {
     func indexViewer () {
         print ("story index is : " + "\(storyIndex)")
     }
+    
     // User presses one of the buttons
     @IBAction func buttonPressed(_ sender: UIButton) {
+        if startOverButton.isHidden == false {
+            startOverButton.isHidden = true
+        }
+        
         if (storyIndex == 1) {
             if (sender.tag == 1) {
                 storyIndex = 3
@@ -81,8 +87,6 @@ class ViewController: UIViewController {
         // TODO Step 4: Write an IF-Statement to update the views
                 
         // TODO Step 6: Modify the IF-Statement to complete the story
-        
-    
     }
     
     func updateUI() {
@@ -100,15 +104,19 @@ class ViewController: UIViewController {
             bottomButton.setTitle(answer3b, for: .normal)
         } else if (storyIndex == 4) {
             storyTextView.text = story4
+            startOver()
         } else if (storyIndex == 5) {
             storyTextView.text = story5
+            startOver()
         } else if (storyIndex == 6) {
             storyTextView.text = story6
+            startOver()
         }
     }
     
     func startOver() {
-        
+        startOverButton.isHidden = false
+        storyIndex = 1
     }
 
 }
