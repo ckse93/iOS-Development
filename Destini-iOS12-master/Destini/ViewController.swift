@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var topButton: UIButton!         // Has TAG = 1
     @IBOutlet weak var bottomButton: UIButton!      // Has TAG = 2
     @IBOutlet weak var storyTextView: UILabel!
+    @IBOutlet weak var startOverButton: UIButton!  // Has TAG = 404
     
     // TODO Step 5: Initialise instance variables here
     var storyIndex = 0
@@ -104,6 +105,10 @@ class ViewController: UIViewController {
         } else if (storyIndex == 6) {
             storyTextView.text = story6
         }
+    }
+    
+    func startOver() {
+        
     }
 
 }
