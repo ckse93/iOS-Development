@@ -58,27 +58,35 @@ class ViewController: UIViewController {
     
     // User presses one of the buttons
     @IBAction func buttonPressed(_ sender: UIButton) {
+        print (sender.tag)
         if startOverButton.isHidden == false {
             startOverButton.isHidden = true
+        }
+        if sender.tag == 404 {
+            startOver()
+            showTopBottomButton()
         }
         
         if (storyIndex == 1) {
             if (sender.tag == 1) {
                 storyIndex = 3
-            } else {
+            } else if (sender.tag == 2) {
                 storyIndex = 2
             }
         } else if (storyIndex == 2) {
             if (sender.tag == 1) {
                 storyIndex = 3
-            } else {
+            } else if (sender.tag == 2) {
                 storyIndex = 4
+                hideTopBottomButton()
             }
         } else if (storyIndex == 3) {
             if (sender.tag == 1) {
                 storyIndex = 6
-            } else {
+                hideTopBottomButton()
+            } else if (sender.tag == 2) {
                 storyIndex = 5
+                hideTopBottomButton()
             }
         }
         
@@ -104,19 +112,27 @@ class ViewController: UIViewController {
             bottomButton.setTitle(answer3b, for: .normal)
         } else if (storyIndex == 4) {
             storyTextView.text = story4
-            startOver()
+            startOverButton.isHidden = false
         } else if (storyIndex == 5) {
             storyTextView.text = story5
-            startOver()
+            startOverButton.isHidden = false
         } else if (storyIndex == 6) {
             storyTextView.text = story6
-            startOver()
+            startOverButton.isHidden = false
         }
     }
     
     func startOver() {
-        startOverButton.isHidden = false
         storyIndex = 1
+    }
+    
+    func hideTopBottomButton () {
+        topButton.isHidden = true
+        bottomButton.isHidden = true
+    }
+    func showTopBottomButton () {
+        topButton.isHidden = false
+        bottomButton.isHidden = false
     }
 
 }

@@ -67,6 +67,9 @@
                                 <state key="normal" title="Start Over">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cE2-Nx-Lhy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
