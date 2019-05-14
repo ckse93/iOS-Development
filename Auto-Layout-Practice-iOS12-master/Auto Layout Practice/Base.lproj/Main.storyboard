@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,15 +18,24 @@
                         <viewControllerLayoutGuide type="bottom" id="uzx-88-lXm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dbi-Gy-sUF">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNV-x5-8fJ">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="518"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNV-x5-8fJ" userLabel="top">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="454"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="artBoard" translatesAutoresizingMaskIntoConstraints="NO" id="9k1-2M-Gpm">
+                                        <rect key="frame" x="264" y="195" width="240" height="128"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.15686274510000001" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9k1-2M-Gpm" firstAttribute="centerX" secondItem="oNV-x5-8fJ" secondAttribute="centerX" id="WjJ-ZO-GcJ"/>
+                                    <constraint firstItem="9k1-2M-Gpm" firstAttribute="centerY" secondItem="oNV-x5-8fJ" secondAttribute="centerY" id="uIc-fc-2Fd"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZN2-va-gMB" userLabel="bottom">
-                                <rect key="frame" x="0.0" y="505" width="768" height="519"/>
+                                <rect key="frame" x="0.0" y="442" width="414" height="454"/>
                                 <color key="backgroundColor" red="0.63460057219999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -41,4 +50,7 @@
             <point key="canvasLocation" x="126.7605633802817" y="131.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="artBoard" width="433.33334350585938" height="533.33331298828125"/>
+    </resources>
 </document>
