@@ -12,6 +12,7 @@
 		84393677228B7883004B07F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84393675228B7883004B07F1 /* Main.storyboard */; };
 		84393679228B7885004B07F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84393678228B7885004B07F1 /* Assets.xcassets */; };
 		8439367C228B7885004B07F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8439367A228B7885004B07F1 /* LaunchScreen.storyboard */; };
+		84393685228B7C7F004B07F1 /* matrix_multiplication_superscala_testing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84393683228B7C7F004B07F1 /* matrix_multiplication_superscala_testing.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		84393678228B7885004B07F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8439367B228B7885004B07F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8439367D228B7885004B07F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84393683228B7C7F004B07F1 /* matrix_multiplication_superscala_testing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = matrix_multiplication_superscala_testing.cpp; path = ../../matrix_multiplication_superscala_testing.cpp; sourceTree = "<group>"; };
+		84393684228B7C7F004B07F1 /* matrix_multiplication_superscala_testing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = matrix_multiplication_superscala_testing.hpp; path = ../../matrix_multiplication_superscala_testing.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,8 @@
 				84393671228B7883004B07F1 /* AppDelegate.swift */,
 				84393673228B7883004B07F1 /* ViewController.swift */,
 				84393675228B7883004B07F1 /* Main.storyboard */,
+				84393683228B7C7F004B07F1 /* matrix_multiplication_superscala_testing.cpp */,
+				84393684228B7C7F004B07F1 /* matrix_multiplication_superscala_testing.hpp */,
 				84393678228B7885004B07F1 /* Assets.xcassets */,
 				8439367A228B7885004B07F1 /* LaunchScreen.storyboard */,
 				8439367D228B7885004B07F1 /* Info.plist */,
@@ -96,6 +101,7 @@
 				TargetAttributes = {
 					8439366D228B7883004B07F1 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -135,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84393685228B7C7F004B07F1 /* matrix_multiplication_superscala_testing.cpp in Sources */,
 				84393674228B7883004B07F1 /* ViewController.swift in Sources */,
 				84393672228B7883004B07F1 /* AppDelegate.swift in Sources */,
 			);
@@ -282,6 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = viewTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -290,6 +298,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chanjung.viewTesting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = viewTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
