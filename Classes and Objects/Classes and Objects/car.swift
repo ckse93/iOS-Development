@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  car.swift
 //  Classes and Objects
 //
 //  Created by Chan Jung on 5/16/19.
@@ -7,6 +7,3 @@
 //
 
 import Foundation
-
-//print("Hello, World!")
-
