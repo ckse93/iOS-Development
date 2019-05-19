@@ -8,4 +8,7 @@
 
 import Foundation
 
-class 
+class Car {
+    var color = "black"
+    let numberOfSeats : Int = 5
+}
