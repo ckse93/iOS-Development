@@ -8,7 +8,14 @@
 
 import Foundation
 
+enum CarType {
+    case sedan
+    case suv
+    case crossover
+}
+
 class Car {
     var color = "black"
     let numberOfSeats : Int = 5
+    var type : CarType = .suv  // make dure the . is there. 
 }
