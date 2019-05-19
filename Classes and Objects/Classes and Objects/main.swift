@@ -10,3 +10,6 @@ import Foundation
 
 //print("Hello, World!")
 
+let myCar = Car()
+print (myCar.color)
+
