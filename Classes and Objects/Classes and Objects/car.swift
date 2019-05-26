@@ -23,6 +23,9 @@ class Car {
         print(numberOfSeats)
         print(type)
     }
+    func drive(){
+        print ("car is moving")
+    }
     
     init(){
     }
