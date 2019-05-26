@@ -18,6 +18,11 @@ class Car {
     var color = "black"
     var numberOfSeats : Int = 5
     var type : CarType = .suv  // make dure the . is there.
+    func displayInfo () {
+        print(color)
+        print(numberOfSeats)
+        print(type)
+    }
     
     init(){
     }

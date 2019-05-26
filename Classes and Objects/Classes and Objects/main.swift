@@ -22,4 +22,8 @@ print (mycar2.type)
 print (mycar2.numberOfSeats)
 print ("\n")
 
+let mycar3 = Car(cusomerChosenCOlor : "Yellow", customerChosenNumberSeats: 4, customerChosenType: .sedan)
+mycar3.displayInfo()
+print ("\n")
+
 // right now, i only have initialization for either color or all the parameters. you cannot have "master" initialization method and leave out one or more parameters and expect the compiler to assign the missing parameters 
