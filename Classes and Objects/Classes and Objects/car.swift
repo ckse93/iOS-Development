@@ -17,5 +17,9 @@ enum CarType {
 class Car {
     var color = "black"
     let numberOfSeats : Int = 5
-    var type : CarType = .suv  // make dure the . is there. 
+    var type : CarType = .suv  // make dure the . is there.
+    
+    init(customerChosenColor : String){
+        color = customerChosenColor
+    }
 }
