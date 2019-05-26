@@ -9,7 +9,7 @@
 import Foundation
 
 class SelfDrivingCar : Car {  // now SelfDrivingCar is a subclass of Car superclass
-    var destination : String  // this is unique for SelfDrivingCar
+    var destination : String?  // this is unique for SelfDrivingCar, ? means it might contain NIL value, making it optional value, if you want to use it later, you have to force-unwrap it with "!"
     var isTesla : Bool
     override init() {
         self.destination = "1 Infinite Loop, CA"  // this has to be called first
@@ -21,8 +21,13 @@ class SelfDrivingCar : Car {  // now SelfDrivingCar is a subclass of Car supercl
         self.destination = inputDestionation
         self.isTesla = isthisTesla
     }
-    override func drive() {  // re-writing everything 
-        print ("car is self-driving to " + destination)
+    override func drive() {  // re-writing everything
+        if let bindingCheck = destination {  // optional binding. bind optional variable with another random variable, if that random variable is successfully created, that means the optional you bind it with is not nil. and you know, if statement is either true or false. and false can mean nil too 
+            print ("car is self-driving to " + destination!)  //"!" means destination is NEVER NIL value here. if destination is NIL, you will see NIL pointer exception
+        }
+        else {
+            print ("destination value is nil")
+        }
     }
     override func displayInfo() {
         super.displayInfo()  // do everything that the superclass's displayInfo does
