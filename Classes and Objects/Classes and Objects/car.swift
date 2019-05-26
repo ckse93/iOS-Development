@@ -16,10 +16,17 @@ enum CarType {
 
 class Car {
     var color = "black"
-    let numberOfSeats : Int = 5
+    var numberOfSeats : Int = 5
     var type : CarType = .suv  // make dure the . is there.
     
-    init(customerChosenColor : String){
-        color = customerChosenColor
+    init(){
+    }
+    
+    
+    convenience init (cusomerChosenCOlor : String, customerChosenNumberSeats : Int, customerChosenType : CarType){
+        self.init() // initializes the default copy of the object
+        color = cusomerChosenCOlor
+        numberOfSeats = customerChosenNumberSeats
+        type = customerChosenType
     }
 }

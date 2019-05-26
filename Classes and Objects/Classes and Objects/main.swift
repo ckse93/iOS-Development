@@ -12,4 +12,14 @@ import Foundation
 
 let myCar = Car()
 print (myCar.color)
+print (myCar.type)
+print (myCar.numberOfSeats)
+print ("\n")
 
+let mycar2 = Car(cusomerChosenCOlor : "Red", customerChosenNumberSeats: 5, customerChosenType: .crossover)
+print (mycar2.color)
+print (mycar2.type)
+print (mycar2.numberOfSeats)
+print ("\n")
+
+// right now, i only have initialization for either color or all the parameters. you cannot have "master" initialization method and leave out one or more parameters and expect the compiler to assign the missing parameters 
