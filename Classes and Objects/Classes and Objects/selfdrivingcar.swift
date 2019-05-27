@@ -9,13 +9,13 @@
 import Foundation
 
 class SelfDrivingCar : Car {  // now SelfDrivingCar is a subclass of Car superclass
-    var destination : String?  // this is unique for SelfDrivingCar, ? means it might contain NIL value, making it optional value, if you want to use it later, you have to force-unwrap it with "!"
+    private var destination : String?  // this is unique for SelfDrivingCar, ? means it might contain NIL value, making it optional value, if you want to use it later, you have to force-unwrap it with "!"
         //  so think of optional as a schrendinger's cat. you put a cat in a box(optional) with a poision bottle. you don't know if the cat is alive or dead until you open the box. same principle. you don't know if the variable is nil or have some value until you unwrap it with ! operator
     var isTesla : Bool
     override init() {
         self.destination = "1 Infinite Loop, CA"  // this has to be called first
         self.isTesla = true
-        super.init()  // and then this. 
+        super.init()  // and then this.
     }
     convenience init(inputDestionation : String, isthisTesla : Bool) {
         self.init()
