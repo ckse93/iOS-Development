@@ -52,7 +52,21 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
     
     //Write the getWeatherData method here:
     func getWeatherData (url : String, parameters : [String : String]) {
-        
+        Alamofire.request (url, method: .get, parameters: parameters).responseJSON {
+//            method -> to which method will we make an HTTP request? this time, .get method
+//            get method gets the data, and does pretty much nothing else
+//            once we have all three parameters, Alamofire makes request, and will get a response
+//            and we use that response in the following code block
+            response in
+            if response.result.isSuccess {
+                print ("successfully got the weather data")
+                
+                
+            } else {  // there was an error during retreving data from the server
+                print ("error \(response.result.error)")
+                self.cityLabel.text = "connection issue"
+            }
+        }
     }
     
 
