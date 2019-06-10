@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "sorting.hpp"
+#include "inserctionsort.h"
 #include "bubblesort.h"
 
 
@@ -21,15 +22,16 @@ int main (){
     displayVector(vec);
     bubbleSort(vec,true);
     displayVector(vec);
+    inserctionSort(vec);
+    displayVector(vec);
     
     return 0;
 }
 
 void displayVector (std::vector<int> arr) {
     std::cout << "the array is : ";
-    int length = arr.size();
-    for (int i =0; i < length; i++) {
-        std::cout << arr[i] << ", ";
+    for (int i = 0 ; i < arr.size(); i++) {
+        std::cout << arr[i] << ",";
     }
     std::cout << "\n";
 }

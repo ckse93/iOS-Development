@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation  // for using GPS
+import Alamofire
+import SwiftyJSON
 
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // inherts from UIViewController and conforms to the rule of CLLocationManagerDelegate
@@ -49,6 +51,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
     /***************************************************************/
     
     //Write the getWeatherData method here:
+    func getWeatherData (url : String, parameters : [String : String]) {
+        
+    }
     
 
     
@@ -90,6 +95,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
             let longitude = location.coordinate.longitude
             let params : [String : String] = ["lat" : "\(latitude)", "lon" : "\(longitude)", "appid" : APP_ID]
             print ("longitude : \(longitude), latitude : \(latitude)")
+            
+            getWeatherData(url : WEATHER_URL, parameters : params)
         }
     }
     

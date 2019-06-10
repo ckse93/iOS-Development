@@ -9,6 +9,7 @@
 
 
 void bubbleSort (std::vector<int>& vec, bool reverse) {
+    std::cout << "bubble sort called\n";
     int len = vec.size();
     for (int i = 0; i < len; i++) {
         for (int j = 0; j < len-1; j++) {
