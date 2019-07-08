@@ -61,6 +61,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
             if response.result.isSuccess {
                 print ("successfully got the weather data")
                 
+                let weatheraJSON : JSON = JSON(response.result.value!)
+//                JSON(blah blah blah) feature comes from SwiftyJSON, not from Swift
+//                this will be used in successful cases, so you can safely force unwrapp it
+                print("weatherJSON : ")
+                self.updateWeatherData(json: weatheraJSON)
+//              Since updateWeatherData() is outside of clposure parameters, you need to self. to look outside the closure
                 
             } else {  // there was an error during retreving data from the server
                 print ("error \(response.result.error)")
@@ -71,15 +77,18 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
     
 
     
-    
-    
-    
-    
+
     //MARK: - JSON Parsing
     /***************************************************************/
    
     
     //Write the updateWeatherData method here:
+    func updateWeatherData (json : JSON) {
+        let temp = json["main"]["temp"]
+        let tempstr = temp.stringValue
+        temperatureLabel.text = tempstr
+//        basically asks it to go to "main" and then "temp"
+    }
     
 
     
