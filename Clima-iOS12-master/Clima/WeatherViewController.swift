@@ -85,7 +85,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
     
     //Write the updateWeatherData method here:
     func updateWeatherData (json : JSON) {
-        if let temp = json["main"]["temp"].double {
+        if let temp = json["main"]["temp"].double { // optional binding!
         // temp is in Kelvin, so we need to make it in DegC.
         let tempstr = "\(Int(temp-237.15))"
         print ("updateWeatherData->tempData = " + tempstr)
@@ -94,8 +94,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
         weatherDataModel.condition = Int(json["weather"][0]["id"].double!)
         weatherDataModel.city = json["name"].stringValue
         weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+            
+        updateUIWithWeatherData()
         }
-//        basically asks it to go to "main" and then "temp"
+        else {
+            cityLabel.text = "Weather data unavailable"
+        }
     }
     
 
@@ -107,7 +111,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
     
     
     //Write the updateUIWithWeatherData method here:
-    
+    func updateUIWithWeatherData() {
+        cityLabel.text = weatherDataModel.city
+        temperatureLabel.text = String(weatherDataModel.temperature-273)
+        weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
+        
+        
+    }
     
     
     
