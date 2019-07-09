@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "gotoSecondScreen", sender: self)
     }
     // this is what will be performed after you pressed the button. 
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoSecondScreen" {
             let destinationViewController = segue.destination as! SecondViewController
@@ -56,7 +57,7 @@ class ViewController: UIViewController {
                 print ("textfield is NIL")
             }
         }
-        
     }
+    // this function will be called JUST before calling the segue. this will update the textPassedOver variable in SecondViewController and as soon as we move onto the SecondViewCOntroller, SecondViewController.ViewDidLoad() will be called, which will update the label. 
 }
 
