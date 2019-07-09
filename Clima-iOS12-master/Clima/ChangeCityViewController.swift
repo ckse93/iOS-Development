@@ -10,7 +10,9 @@ import UIKit
 
 
 //Write the protocol declaration here:
-
+protocol ChangeCityDelegate {
+    func userEnteredANewCityName ()
+}
 
 
 class ChangeCityViewController: UIViewController {
