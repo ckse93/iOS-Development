@@ -18,6 +18,15 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "goToSecondScreen", sender: self)
     }
     
+    @IBAction func textInput(_ sender: Any) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSecondScreen" {
+         let destionationVC = segue.destination
+            
+        }
+    }
 
 }
 
