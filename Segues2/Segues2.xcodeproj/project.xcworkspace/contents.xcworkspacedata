@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Segues.xcodeproj">
+      location = "self:Segues2.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Segues
+//  Segues2
 //
-//  Created by Chan Jung on 7/8/19.
+//  Created by Chan Jung on 7/9/19.
 //  Copyright © 2019 Chan Jung. All rights reserved.
 //
 
