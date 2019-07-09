@@ -47,6 +47,8 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoSecondScreen" {
             let destinationViewController = segue.destination as! SecondViewController
+            // telling the compiler what type of the ViewController the desitonal will be. this case, type is SecondViewController tyoe.
+            
             if let str : String? = textField.text! {
                 destinationViewController.textPassedOver = str
             }

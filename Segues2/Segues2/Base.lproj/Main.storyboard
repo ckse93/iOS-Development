@@ -66,7 +66,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5c-ad-Jza">
-                                <rect key="frame" x="53" y="113" width="268" height="77"/>
+                                <rect key="frame" x="16" y="113" width="343" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="23"/>
                                 <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -77,6 +77,7 @@
                         <viewLayoutGuide key="safeArea" id="HyZ-g9-aOM"/>
                     </view>
                     <connections>
+                        <outlet property="label" destination="p5c-ad-Jza" id="r5h-eR-i00"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="backToMain" id="Yjl-Bl-ksi"/>
                     </connections>
                 </viewController>
