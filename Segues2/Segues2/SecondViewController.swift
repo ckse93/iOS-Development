@@ -11,7 +11,8 @@ import UIKit
 // SECOND VIEW CONTROLLER!!!!!! NOT THE FIRST
 
 class SecondViewController: UIViewController {
-
+    var textPassedOver : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
