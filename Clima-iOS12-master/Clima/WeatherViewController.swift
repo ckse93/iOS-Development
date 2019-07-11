@@ -11,6 +11,14 @@ import CoreLocation  // for using GPS
 import Alamofire
 import SwiftyJSON
 
+/*
+ CoreLocation is apple made library.
+ I am delegating WeatherViewConttroller as the delegate of CoreLocation.
+ So whenever CoreLocation gets a message, it sends it to WeatherViewController class here.
+ in the WeatherViewController::viewDidLoad(), it delegates itself everytime the view is loaded.
+ 
+ */
+
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // inherts from UIViewController and conforms to the rule of CLLocationManagerDelegate
     
@@ -34,16 +42,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         //TODO:Set up the location manager here.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()  // this works in the background
-        
-        
-        
     }
     
     
