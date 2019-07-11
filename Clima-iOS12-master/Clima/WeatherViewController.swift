@@ -16,11 +16,15 @@ import SwiftyJSON
  I am delegating WeatherViewConttroller as the delegate of CoreLocation.
  So whenever CoreLocation gets a message, it sends it to WeatherViewController class here.
  in the WeatherViewController::viewDidLoad(), it delegates itself everytime the view is loaded.
+ And inside the WeatherViewController class, you need to inherit from all the delegate you will be using
+ so, CLLocationManagerDelegate from Apple, and ChangeCityDelegate from you, from ChangecityViewController.swift file
+ but in WeatherViewController class, you need to declare that method you will be using form that protocol.
+ So you have to declare userENderedANewCity() from ChangeCityDelegate protocol.
  
  */
 
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // inherts from UIViewController and conforms to the rule of CLLocationManagerDelegate
+class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {  // inherts from UIViewController and conforms to the rule of CLLocationManagerDelegate
     
     //Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
@@ -160,12 +164,19 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {  // i
     
     
     //Write the userEnteredANewCityName Delegate method here:
-    
+    func userEnteredANewCityName(cityName: String) {
+        print (cityName)
+    }
 
     
     //Write the PrepareForSegue Method here
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "changeCityName" {
+            let destionationVC = segue.destination as! ChangeCityViewController
+            destionationVC.delegate = self
+        }
+    }
     
     
     

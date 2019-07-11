@@ -10,15 +10,16 @@ import UIKit
 
 
 //Write the protocol declaration here:
-protocol ChangeCityDelegate {
-    func userEnteredANewCityName ()
+// if you want to de the delegate, you have to be able to implement userEnteredANewCityName() method
+protocol ChangeCityDelegate {  // this will transfer the info back to the other class
+    func userEnteredANewCityName (cityName : String)
 }
 
 
 class ChangeCityViewController: UIViewController {
     
     //Declare the delegate variable here:
-
+    var delegate : ChangeCityDelegate?
     
     //This is the pre-linked IBOutlets to the text field:
     @IBOutlet weak var changeCityTextField: UITextField!
@@ -30,10 +31,10 @@ class ChangeCityViewController: UIViewController {
         
         
         //1 Get the city name the user entered in the text field
-        
+        let cityName = changeCityTextField.text!
         
         //2 If we have a delegate set, call the method userEnteredANewCityName
-        
+        delegate?.userEnteredANewCityName(cityName: cityName) // if delegate is not NIL, then call this function 
         
         //3 dismiss the Change City View Controller to go back to the WeatherViewController
         
