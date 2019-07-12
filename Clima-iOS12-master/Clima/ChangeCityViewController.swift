@@ -42,6 +42,8 @@ class ChangeCityViewController: UIViewController {
         // this is called optional chaining
         
         //3 dismiss the Change City View Controller to go back to the WeatherViewController
+//        so basically, ChangeCityViewController is stacked on top of the WeatherViewController, and this dismisses ChangeCityViewController
+        // si it goes back to the first viecontroller
         self.dismiss(animated: true, completion: nil)
         
     }
