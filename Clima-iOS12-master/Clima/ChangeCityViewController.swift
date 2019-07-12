@@ -11,6 +11,10 @@ import UIKit
 
 //Write the protocol declaration here:
 // if you want to de the delegate, you have to be able to implement userEnteredANewCityName() method
+// what protocol does is that it just declare it, it doesnt define the method, it just puts it out there
+// the class that implements the protocol will be responsible to define the specific functionality of ALL the methods in here.
+// yeah right, you need to define ALL of the methods in here
+// you know, like an Abstract class. 
 protocol ChangeCityDelegate {  // this will transfer the info back to the other class
     func userEnteredANewCityName (cityName : String)
 }
@@ -34,10 +38,11 @@ class ChangeCityViewController: UIViewController {
         let cityName = changeCityTextField.text!
         
         //2 If we have a delegate set, call the method userEnteredANewCityName
-        delegate?.userEnteredANewCityName(cityName: cityName) // if delegate is not NIL, then call this function 
+        delegate?.userEnteredANewCityName(cityName: cityName) // if delegate is not NIL, then call this function
+        // this is called optional chaining
         
         //3 dismiss the Change City View Controller to go back to the WeatherViewController
-        
+        self.dismiss(animated: true, completion: nil)
         
     }
     
