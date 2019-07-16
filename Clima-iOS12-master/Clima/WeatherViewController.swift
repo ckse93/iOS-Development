@@ -51,10 +51,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()  // this works in the background
+        print ("weatherDataModel.city = " + weatherDataModel.city)
     }
-    
-    
-    
     //MARK: - Networking
     /***************************************************************/
     
@@ -83,9 +81,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         }
     }
     
-
-    
-
     //MARK: - JSON Parsing
     /***************************************************************/
    
@@ -108,11 +103,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             cityLabel.text = "Weather data unavailable"
         }
     }
-    
-
-    
-    
-    
     //MARK: - UI Updates
     /***************************************************************/
     
@@ -122,13 +112,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         cityLabel.text = weatherDataModel.city
         temperatureLabel.text = String(weatherDataModel.temperature-273)
         weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
-        
-        
     }
-    
-    
-    
-    
     
     //MARK: - Location Manager Delegate Methods
     /***************************************************************/
@@ -148,16 +132,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         }
     }
     
-    
-    
     //Write the didFailWithError method here:
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print (error)
         cityLabel.text = "location unavailable"
     }
-    
-    
-
     
     //MARK: - Change City Delegate methods
     /***************************************************************/
@@ -168,18 +147,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         print (cityName)
     }
 
-    
     //Write the PrepareForSegue Method here
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "changeCityName" {
             let destionationVC = segue.destination as! ChangeCityViewController
             destionationVC.delegate = self
         }
     }
-    
-    
-    
 }
-
-

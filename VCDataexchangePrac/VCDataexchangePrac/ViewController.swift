@@ -9,42 +9,40 @@
 
 /*
 this will utilize the segue feaature to  pass info between ViewControllers
- 
- 1. make a second viewcontroller class.
- 2. make a second viecontroller on the storyboard and link it to class, SecondVideController.
- 3. make a segue from first VC to secondVC, name it "gotoSecond"
- 4. make a button on first VC, and link it to the class file
- 5. write following functions.
-    I. prepare(for segue) - to tell what to do when segue is triggered
-    II. inside the button pressed func, write performSegue with identifier
-    III. 
+ 1. create the protocol and its method
+ 2. in the class that will use the proptocol, conform to the delegate
+ 3. create a delegate variable that is type : protocol you just made
+ 4. in the firstVC, make yourself a delegate to the secondVC's delegate variable. this is possible because firstVC "inherits" from that protocol, making firstVC a subtype of protocol as well.
+ 5. when in the secondVC, send data back by triggering protocol's method that is linked with the firstVC.
  
  */
 
 
 import UIKit
 
-class ViewController: UIViewController, doubling {
+class ViewController: UIViewController, CanReceive {
 
+    @IBOutlet weak var firstlabel: UILabel!
     @IBOutlet weak var textInput: UITextField!
     var str = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        doublingStr(inputStr: str)
     }
+    
     @IBAction func button1Pressed(_ sender: Any) {
         performSegue(withIdentifier: "gotoSecond", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoSecond" {
             let secondVC = segue.destination as! SecondViewController
             secondVC.displayStr = textInput.text!
+            secondVC.delegate = self
         }
     }
-    
-    func doublingStr(inputStr : String) {
-        print ("protocol successful! " + inputStr)
+    func dataReceived (data : String) {
+        firstlabel.text = (data)
     }
 
 }

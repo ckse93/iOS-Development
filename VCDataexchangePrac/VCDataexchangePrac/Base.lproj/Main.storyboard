@@ -36,11 +36,19 @@
                                     <action selector="button1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IGe-I9-gGV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v98-NC-pP2">
+                                <rect key="frame" x="119" y="602" width="177" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="firstlabel" destination="v98-NC-pP2" id="oKa-75-0rK"/>
                         <outlet property="textInput" destination="cdo-aA-gku" id="Hhr-Mf-2h6"/>
                         <segue destination="bfV-Af-Nfp" kind="show" identifier="gotoSecond" id="C1k-ha-sE2"/>
                     </connections>
@@ -74,13 +82,20 @@
                                     <action selector="goBackButtonPressed:" destination="bfV-Af-Nfp" eventType="touchUpInside" id="dLS-fL-aBQ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ZL-hm-R6C">
+                                <rect key="frame" x="159" y="336" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nMj-42-LVj"/>
                     </view>
                     <connections>
                         <outlet property="displayLabel" destination="iIv-Dx-pq3" id="1rq-OI-Loz"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goback" id="V4F-T4-G22"/>
+                        <outlet property="textfield2" destination="9ZL-hm-R6C" id="ce8-4C-j7T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFu-fj-jui" userLabel="First Responder" sceneMemberID="firstResponder"/>

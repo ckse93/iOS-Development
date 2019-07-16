@@ -8,14 +8,16 @@
 
 import UIKit
 
-protocol doubling {
-    func doublingStr(inputStr : String)
+protocol CanReceive {
+    func dataReceived (data : String)
 }
 
 class SecondViewController: UIViewController {
     
     var displayStr = ""
-
+    var delegate : CanReceive?
+    @IBOutlet weak var textfield2: UITextField!
+    
     @IBOutlet weak var displayLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +26,15 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func goBackButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goback", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goback" {
-            let firstVC = segue.destination as! ViewController
-            firstVC.str = "going back with " + displayStr
+        if let optionalCheck = textfield2.text {
+            delegate?.dataReceived(data: optionalCheck)
+            //if delegate == NIL, this line will not execute.
+            
+            dismiss(animated: true, completion: nil)
         }
     }
+    
+    
     /*
     // MARK: - Navigation
 
