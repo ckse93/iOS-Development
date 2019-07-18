@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
+    var currency = ""
     let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC"
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
     var finalURL = ""
@@ -46,8 +46,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // this particular method is called everytime you make a selection in the rolly thiny
         finalURL = baseURL + currencyArray[row]
+        currency = currencyArray[row]
         print(finalURL)
-        
+        getBitcoinDate(url: finalURL)
     }
     // the rolly thingy maky---------------------------------------------------------------------------------A
 //    
@@ -71,7 +72,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 //    /***************************************************************/
     
     func updateBitcoinValue (json : JSON) {
-        
+        print ("launching updateBitcoinValue func...")
+        print(json)
+        print("Bitcoin Price RN is : " + json["last"].stringValue)
+        bitcoinPriceLabel.text = json["last"].stringValue + currency
     }
 //    
 //    func updateWeatherData(json : JSON) {
