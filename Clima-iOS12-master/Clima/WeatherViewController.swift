@@ -21,6 +21,9 @@ import SwiftyJSON
  but in WeatherViewController class, you need to declare that method you will be using form that protocol.
  So you have to declare userENderedANewCity() from ChangeCityDelegate protocol.
  
+ if you think this shit is confusing af, then watch the 168. Delegate and protocols Explained
+ by Angela Yang, iOS 12 & Swift on Udemy.
+ 
  */
 
 
