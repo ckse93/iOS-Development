@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  BitcoinTicker
-//
-//  Created by Angela Yu on 23/01/2016.
-//  Copyright © 2016 London App Brewery. All rights reserved.
-//
-
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -19,17 +11,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     //Pre-setup IBOutlets
     @IBOutlet weak var bitcoinPriceLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
-    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        currencyPicker.delegate = self
         currencyPicker.dataSource = self
     }
 
-    
-    //TODO: Place your 3 UIPickerView delegate methods here
+    // UIPickerView delegate methods here
     // the rolly thingy maky---------------------------------------------------------------------------------A
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -77,20 +66,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         print("Bitcoin Price RN is : " + json["last"].stringValue)
         bitcoinPriceLabel.text = json["last"].stringValue + currency
     }
-//    
-//    func updateWeatherData(json : JSON) {
-//        
-//        if let tempResult = json["main"]["temp"].double {
-//        
-//        weatherData.temperature = Int(round(tempResult!) - 273.15)
-//        weatherData.city = json["name"].stringValue
-//        weatherData.condition = json["weather"][0]["id"].intValue
-//        weatherData.weatherIconName =    weatherData.updateWeatherIcon(condition: weatherData.condition)
-//        }
-//        
-//        updateUIWithWeatherData()
-//    }
-//    
 
 
 
