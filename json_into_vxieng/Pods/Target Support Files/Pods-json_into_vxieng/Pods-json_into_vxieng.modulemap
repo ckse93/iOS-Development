@@ -1,0 +1,6 @@
+framework module Pods_json_into_vxieng {
+  umbrella header "Pods-json_into_vxieng-umbrella.h"
+
+  export *
+  module * { export * }
+}
