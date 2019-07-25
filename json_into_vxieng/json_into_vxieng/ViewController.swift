@@ -47,6 +47,15 @@ class ViewController: NSViewController {
     }
     
     
+    /*
+     for bits table, it has to have
+     SOME_UNIQUE_IDENTIFIER(mix it with ACparameter and EEC Menomic maybe?) | BITNUM | 0VAL | 1VAL | LABEL
+     
+     BITNUM, 0VAL, 1VAL, LABEL, just make them equal to "UNDECIDED" or "UNDEC" so you can track it better later.
+     of course, skip the SPAR data type. we dont need that. 
+     */
+    
+    
     
 // where all main work is happening
     func formatBlock (json : JSON) -> String{
@@ -66,7 +75,7 @@ class ViewController: NSViewController {
                 else {
                     print (n)
                     str = str + "FDS A1_"
-                    str = str + json["pageTables"][i]["tables"][n][0].stringValue.replacingOccurrences(of: " ", with: "") + "_FS STATUS=UNDECIDED\n" // Data Designation
+                    str = str + json["pageTables"][i]["tables"][n][0].stringValue.replacingOccurrences(of: " ", with: "").uppercased() + "_FS STATUS=UNDECIDED\n" // Data Designation
                     str = str + "A1_"
                     str = str + format_EEC_Mnemonic(str:json["pageTables"][i]["tables"][n][7].stringValue.replacingOccurrences(of: " ", with: "")) // EEC Mnemonic
                     str = str + " TYPE=" + json["pageTables"][i]["tables"][n][6].stringValue.replacingOccurrences(of: " ", with: "")  // type
@@ -74,7 +83,7 @@ class ViewController: NSViewController {
                     if json["pageTables"][i]["tables"][n][8].stringValue != " " { // when signal value is present
                         str = str + " SIGNALRANGE=\"" + json["pageTables"][i]["tables"][n][8].stringValue.replacingOccurrences(of: " ", with: "") + ".000000 " + json["pageTables"][i]["tables"][n][9].stringValue.replacingOccurrences(of: " ", with: "") + ".000000" + " " + json["pageTables"][i]["tables"][n][13].stringValue.replacingOccurrences(of: " ", with: "")+"\""
                     }
-                    str = str + "\n$END-FDS\n"
+                    str = str + "\n$END-FDS\n*\n"
                     n+=1
                 }
             }

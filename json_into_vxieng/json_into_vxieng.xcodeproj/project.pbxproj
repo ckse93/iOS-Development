@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7848E5B3F91C7A4AC6DE63F7 /* Pods_json_into_vxieng.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF56660F147E60CF85A1662C /* Pods_json_into_vxieng.framework */; };
+		8402548922EA58EF00F71B0C /* json_box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402548822EA58EF00F71B0C /* json_box.swift */; };
 		844B74D422EA083E00D755C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B74D322EA083E00D755C3 /* AppDelegate.swift */; };
 		844B74D622EA083E00D755C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B74D522EA083E00D755C3 /* ViewController.swift */; };
 		844B74D822EA083F00D755C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844B74D722EA083F00D755C3 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8402548822EA58EF00F71B0C /* json_box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = json_box.swift; sourceTree = "<group>"; };
 		844B74D022EA083E00D755C3 /* json_into_vxieng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = json_into_vxieng.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844B74D322EA083E00D755C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844B74D522EA083E00D755C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				844B74D322EA083E00D755C3 /* AppDelegate.swift */,
 				844B74D522EA083E00D755C3 /* ViewController.swift */,
+				8402548822EA58EF00F71B0C /* json_box.swift */,
 				844B74D722EA083F00D755C3 /* Assets.xcassets */,
 				844B74D922EA083F00D755C3 /* Main.storyboard */,
 				844B74DC22EA083F00D755C3 /* Info.plist */,
@@ -84,7 +87,6 @@
 				F39BD0F0AE63E2CFFDB1C6D4 /* Pods-json_into_vxieng.debug.xcconfig */,
 				89ECF24F8C9DF799B016E9E2 /* Pods-json_into_vxieng.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -204,6 +206,7 @@
 			files = (
 				844B74D622EA083E00D755C3 /* ViewController.swift in Sources */,
 				844B74D422EA083E00D755C3 /* AppDelegate.swift in Sources */,
+				8402548922EA58EF00F71B0C /* json_box.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
