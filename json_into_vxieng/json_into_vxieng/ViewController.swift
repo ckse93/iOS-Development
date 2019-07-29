@@ -48,6 +48,33 @@ class ViewController: NSViewController {
         return returnStr
     }
     
+    func formatBITparameter (AC_Parameter : String, EEC_Mnemonic : String) -> String{
+        //returns unique parameter for BIT block.
+        // if AC_Param has "HIGH", "LOW", "LEFT", "RIGHT", "OPEN", "CLOSE" value, append it onto EEC_Mneominc
+        if AC_Parameter.uppercased().contains ("HIGH") {
+            return "HIGH_"+EEC_Mnemonic
+        }
+        else if AC_Parameter.uppercased().contains ("LOW") {
+            return "LOW_"+EEC_Mnemonic
+        }
+        else if AC_Parameter.uppercased().contains ("LEFT") {
+            return "LEFT_"+EEC_Mnemonic
+        }
+        else if AC_Parameter.uppercased().contains ("RIGHT") {
+            return "RIGHT_"+EEC_Mnemonic
+        }
+        else if AC_Parameter.uppercased().contains ("OPEN") {
+            return "OPEN_"+EEC_Mnemonic
+        }
+        else if AC_Parameter.uppercased().contains ("CLOSE") {
+            return "CLOSE"+EEC_Mnemonic
+        }
+        else {
+            return AC_Parameter.uppercased() + EEC_Mnemonic
+        }
+    }
+    
+    
     
     /*
      for bits table, it has to have
@@ -74,21 +101,23 @@ class ViewController: NSViewController {
         
             var n = 2  // index 2 is where meaningful data starts.
             while (n < 10) {  // in completion of this while loop, one row will be written
+                
                 if json["pageTables"][i]["tables"][n][6].stringValue.replacingOccurrences(of: " ", with: "") == "SPAR" || json["pageTables"][i]["tables"][n][1].stringValue.replacingOccurrences(of: " ", with: "") == ""{
                     n = n + 1
                     // this if conditional check SPARE type or dummy shit
                 }
                     
-               else if (json["pageTables"][i]["tables"][n][0].stringValue == json["pageTables"][i]["tables"][n-1][0].stringValue){
+               else if (json["pageTables"][i]["tables"][n][0].stringValue == lastDatasetDestination){
                     //bits concat operation starts here.
-                    str.removeLast(11)
-                    str += "$BITS\n"
-                    
-                    print ("entering while loop for BITS operation ")
-                    print (json["pageTables"][i]["tables"][n][0].stringValue + " VS " + json["pageTables"][i]["tables"][n-1][0].stringValue)
-                    
-                    
-                    while (json["pageTables"][i]["tables"][n][0].stringValue == json["pageTables"][i]["tables"][n-1][0].stringValue) {
+                    str.removeLast(11)  //removing $END-FDS
+                    let checker = str.suffix(10)
+                    if checker == "$END-BITS\n" {
+                        str.removeLast(10)
+                    } else {
+                        str += "$BITS\n"
+                        bitnum = 1
+                    }
+                    while (json["pageTables"][i]["tables"][n][0].stringValue == lastDatasetDestination) {
                         
                         if json["pageTables"][i]["tables"][n][6].stringValue.replacingOccurrences(of: " ", with: "") == "SPAR" {
                             n+=1
@@ -99,11 +128,9 @@ class ViewController: NSViewController {
                         }
                     }
                     str+="$END-BITS\n$END-FDS\n*\n"
-                    bitnum = 1 // resetting the bitnum 
                 }
                 
                 else {
-                    print (n)
                     str = str + "FDS A1_"
                     str = str + json["pageTables"][i]["tables"][n][0].stringValue.replacingOccurrences(of: " ", with: "").uppercased() + "_FS STATUS=UNDECIDED\n" // Data Designation
                     str = str + "A1_"
@@ -113,6 +140,7 @@ class ViewController: NSViewController {
                     if json["pageTables"][i]["tables"][n][8].stringValue != " " { // when signal value is present
                         str = str + " SIGNALRANGE=\"" + json["pageTables"][i]["tables"][n][8].stringValue.replacingOccurrences(of: " ", with: "") + ".000000 " + json["pageTables"][i]["tables"][n][9].stringValue.replacingOccurrences(of: " ", with: "") + ".000000" + " " + json["pageTables"][i]["tables"][n][13].stringValue.replacingOccurrences(of: " ", with: "")+"\""
                     }
+                    lastDatasetDestination = json["pageTables"][i]["tables"][n][0].stringValue
                     str = str + "\n$END-FDS\n*\n"
                     n+=1
                 }
@@ -120,7 +148,6 @@ class ViewController: NSViewController {
             i+=1
         }
         str += "*\n$END-RECEIVER\n********************************************************************************"
-
         return str
     }
     
@@ -136,13 +163,11 @@ class ViewController: NSViewController {
     
     @IBAction func buttonPressed(_ sender: Any) {
         print("button pressed")
-        print(inputJSON)
+       // print(inputJSON)
         print ("-------------------------------------------------------------------------")
         print (formatBlock(json: inputJSON))
         print ("-------------------------------------------------------------------------")
         print (formatBlock(json: json2))
     }
-    
-
 }
 
