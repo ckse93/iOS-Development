@@ -18,6 +18,8 @@ class ViewController: NSViewController {
     var finalstr : String = ""
     
     var firstLine : String = ""
+    
+    let path = "output.vxieng"
 
     @IBOutlet weak var label: NSTextField!
     override func viewDidLoad() {
@@ -62,16 +64,44 @@ class ViewController: NSViewController {
         var str = "$RECEIVER "  // first line of the block.
         str += json["pageTables"][0]["tables"][0][2].stringValue.replacingOccurrences(of: " ", with: "") + " PORT=UNDECIDED ACTIVE=UNDECIDED\n*\n" // frame designation
         
-        var numberOfPages = json["numPages"].intValue // how many pages?
+        let numberOfPages = json["numPages"].intValue // how many pages?
         var i = 0
+        
+        var lastDatasetDestination = ""
+        var bitnum = 1
+        
         while (i<numberOfPages) {
         
             var n = 2  // index 2 is where meaningful data starts.
-            while (n < 10) {  // in completion of this while loop, one page will be written
+            while (n < 10) {  // in completion of this while loop, one row will be written
                 if json["pageTables"][i]["tables"][n][6].stringValue.replacingOccurrences(of: " ", with: "") == "SPAR" || json["pageTables"][i]["tables"][n][1].stringValue.replacingOccurrences(of: " ", with: "") == ""{
                     n = n + 1
-                    // this if conditional checks SPARE type or dummy shit
+                    // this if conditional check SPARE type or dummy shit
                 }
+                    
+               else if (json["pageTables"][i]["tables"][n][0].stringValue == json["pageTables"][i]["tables"][n-1][0].stringValue){
+                    //bits concat operation starts here.
+                    str.removeLast(11)
+                    str += "$BITS\n"
+                    
+                    print ("entering while loop for BITS operation ")
+                    print (json["pageTables"][i]["tables"][n][0].stringValue + " VS " + json["pageTables"][i]["tables"][n-1][0].stringValue)
+                    
+                    
+                    while (json["pageTables"][i]["tables"][n][0].stringValue == json["pageTables"][i]["tables"][n-1][0].stringValue) {
+                        
+                        if json["pageTables"][i]["tables"][n][6].stringValue.replacingOccurrences(of: " ", with: "") == "SPAR" {
+                            n+=1
+                        } else {
+                            str += json["pageTables"][i]["tables"][n][0].stringValue + "BITNUM=" + String(bitnum) + " 0VAL= 1VAL= LABEL=\n"
+                            bitnum+=1
+                            n+=1
+                        }
+                    }
+                    str+="$END-BITS\n$END-FDS\n*\n"
+                    bitnum = 1 // resetting the bitnum 
+                }
+                
                 else {
                     print (n)
                     str = str + "FDS A1_"
@@ -90,6 +120,7 @@ class ViewController: NSViewController {
             i+=1
         }
         str += "*\n$END-RECEIVER\n********************************************************************************"
+
         return str
     }
     
