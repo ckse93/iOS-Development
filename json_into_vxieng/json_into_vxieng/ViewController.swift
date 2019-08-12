@@ -74,6 +74,17 @@ class ViewController: NSViewController {
      */
     
     
+    // this function is specifially designed to parse the page that has 2 tables.
+    // this will cut off some of the contents that is at json["pageTables"][i]["tables"][n].stringValue and reformat that into appropriate string.
+    
+    func half_half (json : JSON) -> String {
+        var str = ""
+        var jsonStr = json.stringValue
+        let strArray = jsonStr.components(separatedBy: " ")
+        
+        return str
+    }
+    
     /*
      func formatBlock
      this function will parse the json input and generate converted vxieng configuration.
@@ -84,6 +95,8 @@ class ViewController: NSViewController {
     func formatBlock (json : JSON) -> String{
         var str = "$RECEIVER "  // first line of the block.
         str += json["pageTables"][0]["tables"][0][2].stringValue.replacingOccurrences(of: " ", with: "") + " PORT=UNDECIDED ACTIVE=UNDECIDED\n*\n" // frame designation
+        
+        let channel = "A1_"
         
         let numberOfPages = json["numPages"].intValue // how many pages?
         
@@ -98,8 +111,13 @@ class ViewController: NSViewController {
                 let TYPE = json["pageTables"][i]["tables"][n][6].stringValue.replacingOccurrences(of: " ", with: "")
                 let EEC = format_EEC_Mnemonic(str:json["pageTables"][i]["tables"][n][7].stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: ""))
                 let DatasetDesignation = json["pageTables"][i]["tables"][n][0].stringValue.replacingOccurrences(of: " ", with: "").uppercased().replacingOccurrences(of: "\n", with: "")
+                if json["pageTables"][i]["tables"][n].stringValue == " " {
+                    // this is where you call half half func.
+                    
+                    
+                }
                 
-                if  TYPE == "SPAR" || json["pageTables"][i]["tables"][n][1].stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "") == ""{
+                else if  TYPE == "SPAR" || json["pageTables"][i]["tables"][n][1].stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "") == ""{
                     n = n + 1
                     // this if conditional check SPARE type or dummy shit
                 }
@@ -119,7 +137,7 @@ class ViewController: NSViewController {
                         if (BIT_TYPE == "SPAR") {
                             n+=1
                         } else {
-                            str += format_EEC_Mnemonic(str: json["pageTables"][i]["tables"][n][7].stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")) + "_"
+                            str += channel + format_EEC_Mnemonic(str: json["pageTables"][i]["tables"][n][7].stringValue.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")) + "_"
                                 + json["pageTables"][i]["tables"][n][3].stringValue // Start Bit Position
                                  + "BITNUM=" + String(bitnum) + " 0VAL= 1VAL= LABEL=\n"
                             bitnum+=1
@@ -131,9 +149,9 @@ class ViewController: NSViewController {
                 }
                 
                 else {
-                    str = str + "FDS A1_"
+                    str = str + "$FDS" + channel
                     str = str + DatasetDesignation + "_FS STATUS=UNDECIDED\n" // Data Designation
-                    str = str + "A1_"
+                    str = str + channel
                     str = str + EEC // EEC Mnemonic
                     str = str + " TYPE=" + TYPE  // type
                     str = str + " SIZE=UNDECIDED ADDRESS=UNDECIDED"
@@ -156,7 +174,7 @@ class ViewController: NSViewController {
     @IBAction func buttonPressed(_ sender: Any) {
         print("button pressed")
        // print(inputJSON)
-        print ("*-------------------------------------------------------------------------")
+        print ("*-------------------------------------------------------------------------")  // this line will be ignored by the compiler of vxieng
         print (formatBlock(json: jsonInit.json))
         print ("*-------------------------------------------------------------------------")
         //print (formatBlock(json: json2))
