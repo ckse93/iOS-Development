@@ -12,11 +12,7 @@
 
 ## Flouuuu
 
-
-
-We’re going to make a Bitcoin price ticker. The app will give you the latest Bitcoin prices in all the popular, traded currencies, so you can track how well your Bitcoin investments are doing on the go.
-
-
->This is a companion project to The App Brewery's Complete App Developement Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
-
-![End Banner](Documentation/readme-end-banner.png)
+we'll set up constants and UI elements before viewDidLoad() like usual.
+and we'll set UIPickerview as a self delegate. so we can get info and whatnot.
+Since UIPicker is a protocol, you need to define what the functions will do. so you need to define numberOfComponents(), pickerView() and stuff. 
+pickerView will then call getBitCoinDate(), which will call updateBitcoinValue(). and the app will display the value of Bitcoin as of that day and refreshen the user disappointment. 
