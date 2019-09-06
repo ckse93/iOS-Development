@@ -1,13 +1,18 @@
 
-![App Brewery Banner](Documentation/AppBreweryBanner.png)
-
 #  Bitcoin Ticker
+  
+  this app will use 2 cocoapod, SwiftyJSON and Alamofire to get bitcoin information from web and display the current value.
+  Great reminder that you should have bought it years ago and now you spend your life regretting it. This app serves as a good reminder of your failure. 
 
-## Our Goal
+## Elements 
 
-The objective of this challenge is to apply the skills you learned in the Clima tutorial and make a Bitcoin price reporter. We are going to revisit how to use Cocoapods, networking calls and JSON parsing. This will be the most advanced challenge you will face to date. We believe in you!
+* UIPickerView - the rolly dolly thing you can roll doll do select information. 
+* Alamofire - for sending and getting requests
+* swiftyJSON - for json processing
 
-## What you will create
+## Flouuuu
+
+
 
 We’re going to make a Bitcoin price ticker. The app will give you the latest Bitcoin prices in all the popular, traded currencies, so you can track how well your Bitcoin investments are doing on the go.
 
