@@ -12,4 +12,4 @@
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
 - how to store data in cloud
 - how to query cloud database 
-  - if it acts like Fairview's SQL server, imma shoot my laptop
+- and lets hope it doesnt act like the database i used before... plz
