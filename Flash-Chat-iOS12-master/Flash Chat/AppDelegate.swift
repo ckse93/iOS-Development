@@ -1,12 +1,10 @@
-//
-//  AppDelegate.swift
-//  Flash Chat
-//
+
 //  The App Delegate listens for events from the system. 
 //  It recieves application level messages like did the app finish launching or did it terminate etc. 
 //
 
 import UIKit
+import Firebase  // you need to import this first
 
 
 @UIApplicationMain
@@ -16,8 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+        // when your app first launches, appdelegate is called the first, and it will arrive at this point. So basically before doing anything, you need to configure the FirebaseApp. 
         
-        //TODO: Initialise and Configure your Firebase here:
         
         
         return true
