@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        // when your app first launches, appdelegate is called the first, and it will arrive at this point. So basically before doing anything, you need to configure the FirebaseApp. 
+        // when your app first launches, appdelegate is called the first, and it will arrive at this point. So basically before doing anything, you need to configure the FirebaseApp.
+        let myDatabase = Database.database().reference()  // save some test data on DB. this is a reference to a brand new DB
+        myDatabase.setValue("test data")  // database has to give the user proper authorization to write data. make sure to check if the DB is realtime DB!!!!!
         
         
         
