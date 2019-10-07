@@ -20,19 +20,31 @@
 - open up the inspector panel from right hand side, give it a unique identifier 
 ### 2. Setting up user registration 
 - check out firebade iOS doc for more API calls 
+0. Selet each password textview and check the box "secure text entry". or not, if you dont value your privacy
 1. `import Firebase`
 2. Inside `registerPressed()`, 
-```
+```swift
 Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             if error != nil { // this closure block will be called once it is done. and the closure block will check for error and print statement accordingly
                 print(error!)
+                // you might want to make a toast if there was an error. So user would know what happened.
             } else {
                 print ("registration successful")
             }
         }
 ```
-
-
+### 3. After registration, go to chat view
+1. use segue that you have defined before. this case, it is "goToChat"
+2. inside `createUser()`, if the registration was successful, then go to the chatroom.
+3. this is within the closure syntax, so you need
+```swift
+self.performSegue(withIdentifier: "goToChat", sender: self)
+``` 
+instead of 
+```swift 
+performSegue(withIdentifier: "goToChat", sender: self)
+```
+i mean, if you want to do it outside the closure syntax, you don't have to include `self.` keyword. 
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
 - how to store data in cloud
