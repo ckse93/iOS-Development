@@ -9,11 +9,29 @@
 - god im gonna need to buy another phone. great
 
 ## Flow
-### saving data to database 
+### 0. test. saving data to database 
 1. first thing first, cocoapod install.
 2. then import the libs you are gonna use and then initialize and configure 
 - this is done in `AppDelegate.swift`. Once you launch your app, AppDelegate -> application -> didFinishLaunchingWithOptions is called consecutively. cool. and here is where you init + configure your Firebaseapp
   - `FirebaseApp.configure()`
+### 1. Linking ViewControllers with each other
+1. using segues, link two VCs together
+- as you know, ctrl+click from VC1 and drag to VC2, generating a push segue.
+- open up the inspector panel from right hand side, give it a unique identifier 
+### 2. Setting up user registration 
+- check out firebade iOS doc for more API calls 
+1. `import Firebase`
+2. Inside `registerPressed()`, 
+```
+Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
+            if error != nil { // this closure block will be called once it is done. and the closure block will check for error and print statement accordingly
+                print(error!)
+            } else {
+                print ("registration successful")
+            }
+        }
+```
+
 
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
