@@ -63,3 +63,6 @@ arr.map( {(n1) in
 arr.map( {$0 + 1} )
 
 arr.map{$0+1}
+
+
+arr.map{"\($0)"}  // stringify the element. now arr is an array of strings 
