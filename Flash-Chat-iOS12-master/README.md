@@ -33,6 +33,7 @@ Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfi
             }
         }
 ```
+note that createUser() is asynnchronous 
 ### 3. After registration, go to chat view
 1. use segue that you have defined before. this case, it is "goToChat"
 2. inside `createUser()`, if the registration was successful, then go to the chatroom.
@@ -49,6 +50,7 @@ i mean, if you want to do it outside the closure syntax, you don't have to inclu
 ### understanding closure and callback
 1. closure is like a nameless function. and it can be passed in as an input parameter. `in` keyword in swuft denotes closure
 2. callback function is a function that can be accessible by another function and invoked after the first function is completed, if it does.
+3. so in this case, createUser() gets 3 parameters fed in, email and password from views, and closure function parameter, denoted with `in` keyword. Within the createuser(), it will generate `error` or not. if error was generated, that means there was an error. if not, it was successful. this `error` is later then get fed onto closure function parameter **AS A PARAMETER**, doing whatever the thing does. 
 
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
