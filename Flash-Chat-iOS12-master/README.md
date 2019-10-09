@@ -45,6 +45,11 @@ instead of
 performSegue(withIdentifier: "goToChat", sender: self)
 ```
 i mean, if you want to do it outside the closure syntax, you don't have to include `self.` keyword. 
+
+### understanding closure and callback
+1. closure is like a nameless function. and it can be passed in as an input parameter. `in` keyword in swuft denotes closure
+2. callback function is a function that can be accessible by another function and invoked after the first function is completed, if it does.
+
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
 - how to store data in cloud
