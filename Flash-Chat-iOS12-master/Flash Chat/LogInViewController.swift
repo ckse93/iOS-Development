@@ -28,10 +28,10 @@ class LogInViewController: UIViewController {
     @IBAction func logInPressed(_ sender: AnyObject) {
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             if error != nil {
-                print("login successful")
-                self.performSegue(withIdentifier: <#T##String#>, sender: self)
+                print("error")
             } else {
-                print ("error")
+                print ("no error")
+                self.performSegue(withIdentifier: "goToChat", sender: self)
             }
         }
         
