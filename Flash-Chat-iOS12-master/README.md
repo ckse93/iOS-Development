@@ -52,6 +52,23 @@ i mean, if you want to do it outside the closure syntax, you don't have to inclu
 2. callback function is a function that can be accessible by another function and invoked after the first function is completed, if it does.
 3. so in this case, createUser() gets 3 parameters fed in, email and password from views, and closure function parameter, denoted with `in` keyword. Within the createuser(), it will generate `error` or not. if error was generated, that means there was an error. if not, it was successful. this `error` is later then get fed onto closure function parameter **AS A PARAMETER**, doing whatever the thing does. 
 
+### 4. Log out implementation
+1. Firebase gives you `signOut()` method, which is **throwable**, meaning that it can generate error and must be handled
+2. just wrap that inside the try catch block so when it *throws* error, we can catch that
+```swift
+do{
+            try Auth.auth().signOut()
+        }
+        catch {
+            print("error signing out")
+        }
+        
+    }
+``` 
+like so. Note that it's not like java where you can just wrap it up with try-catch block. `try` on swift kinda lets you know where the funky stuff might happen 
+3. At this point, this ChatViewController is sitting on top of `WelcomeViewController` -> `RegisterViewCOntroller` These VCs are linked together with `Navigation Controller`
+
+
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
 - how to store data in cloud
