@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController {
             } else {
                 print ("registration successful")
                 self.performSegue(withIdentifier: "goToChat", sender: self)  // this will teleport you to the chat view controller.
-                // but this is within the closure block. you need to designate which class this is coming from.
+                // but this is within the closure block. you need to designate which class this is coming from. 
             }
         }
     } 
