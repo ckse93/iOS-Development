@@ -58,6 +58,7 @@ i mean, if you want to do it outside the closure syntax, you don't have to inclu
 ```swift
 do{
             try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
         }
         catch {
             print("error signing out")
@@ -66,8 +67,8 @@ do{
     }
 ``` 
 like so. Note that it's not like java where you can just wrap it up with try-catch block. `try` on swift kinda lets you know where the funky stuff might happen 
-3. At this point, this ChatViewController is sitting on top of `WelcomeViewController` -> `RegisterViewCOntroller` These VCs are linked together with `Navigation Controller`
-
+3. At this point, this ChatViewController is sitting on top of `WelcomeViewController` -> `RegisterViewCOntroller` These VCs are linked together with `Navigation Controller` and `navigationController?.popToRootViewController(animated: true)` will allow you to skip the middle VC, `RegisterViewCotroller`, and go back to main 
+4. just like register, Firebase has `signIn()` method, using closure. you know the drill
 
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
