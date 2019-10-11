@@ -70,6 +70,25 @@ like so. Note that it's not like java where you can just wrap it up with try-cat
 3. At this point, this ChatViewController is sitting on top of `WelcomeViewController` -> `RegisterViewCOntroller` These VCs are linked together with `Navigation Controller` and `navigationController?.popToRootViewController(animated: true)` will allow you to skip the middle VC, `RegisterViewCotroller`, and go back to main 
 4. just like register, Firebase has `signIn()` method, using closure. you know the drill
 
+#### 5. Sign in implementation 
+1. pretty much like Register, but this time, use `signIn()` method for Firebase. and perform segue
+
+### 6. ChatView and table view 
+1. it will use two protocols, so you need to extend from there 
+```swift
+class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataSource // like so 
+```
+it means that UIViewController will be the delegate of the tableview. So whatever happens in TableView, UIViewController will be notified, and ChatViewController will be responsible for serving up the data for that TableView. 
+2. setting ChatViewController as the delegate for those 
+```swift
+messageTableView.delegate = self
+messageTableView.dataSource = self
+
+```
+3. conform to the protocol 
+as you know protocol is like an abstract method package. you need to override them to conform to the protocol. 
+Xcode would probably complain you didnt conform to it, just hit fix and Xcode will list out method to override.
+
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
 - how to store data in cloud
