@@ -10,7 +10,9 @@ import UIKit
 import Firebase
 
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    // thi
     
     // Declare instance variables here
 
@@ -25,9 +27,8 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //TODO: Set yourself as the delegate and datasource here:
-        
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
         
         
         //TODO: Set yourself as the delegate of the text field here:
@@ -50,6 +51,9 @@ class ChatViewController: UIViewController {
     
     
     //TODO: Declare cellForRowAtIndexPath here:
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
     
     
     
