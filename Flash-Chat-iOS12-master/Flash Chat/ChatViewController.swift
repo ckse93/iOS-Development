@@ -52,7 +52,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     //TODO: Declare cellForRowAtIndexPath here:
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
     }
     
     
@@ -118,7 +118,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         catch {
             print("error signing out")
         }
-        
+        // unlike java, it the error handling in swift is wrapped around the do-try-catch block.
     }
     
 
