@@ -57,14 +57,12 @@ i mean, if you want to do it outside the closure syntax, you don't have to inclu
 2. just wrap that inside the try catch block so when it *throws* error, we can catch that
 ```swift
 do{
-            try Auth.auth().signOut()
-            navigationController?.popToRootViewController(animated: true)
-        }
-        catch {
-            print("error signing out")
-        }
-        
-    }
+  try Auth.auth().signOut()
+  navigationController?.popToRootViewController(animated: true)
+  }
+  catch {
+    print("error signing out")
+  }
 ``` 
 like so. Note that it's not like java where you can just wrap it up with try-catch block. `try` on swift kinda lets you know where the funky stuff might happen 
 3. At this point, this ChatViewController is sitting on top of `WelcomeViewController` -> `RegisterViewCOntroller` These VCs are linked together with `Navigation Controller` and `navigationController?.popToRootViewController(animated: true)` will allow you to skip the middle VC, `RegisterViewCotroller`, and go back to main 
