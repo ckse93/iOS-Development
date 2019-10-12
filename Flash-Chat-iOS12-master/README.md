@@ -88,6 +88,15 @@ messageTableView.dataSource = self
 3. conform to the protocol 
 as you know protocol is like an abstract method package. you need to override them to conform to the protocol. 
 Xcode would probably complain you didnt conform to it, just hit fix and Xcode will list out method to override.
+4. so in this case, we are using custom cell for each tableUIView cell. it is defined under Custom Cell directory.
+this custom message cell is linked to `CustomMessageCell` class. `CustomMessageCell` class manages what to display on the custom element thingy, like background, imageview, textview and stuff 
+5. go back to `ChatViewController` and under the overriding tableveiew func like this
+```swift
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
+    }
+    ```
+Note that identifier cab be found at MessageCell.xib's identifier section, and give IndexPath just indexPath
 
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
