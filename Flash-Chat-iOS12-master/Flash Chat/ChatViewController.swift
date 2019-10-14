@@ -29,7 +29,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         messageTableView.delegate = self
         messageTableView.dataSource = self
-        
+        messageTableView.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: "customMessageCell")  // this registers nib aka xib, to this messageTableView with the identifier
         
         //TODO: Set yourself as the delegate of the text field here:
 
