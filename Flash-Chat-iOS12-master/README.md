@@ -88,13 +88,28 @@ as you know protocol is like an abstract method package. you need to override th
 Xcode would probably complain you didnt conform to it, just hit fix and Xcode will list out method to override.
 4. so in this case, we are using custom cell for each tableUIView cell. it is defined under Custom Cell directory.
 this custom message cell is linked to `CustomMessageCell` class. `CustomMessageCell` class manages what to display on the custom element thingy, like background, imageview, textview and stuff 
-5. go back to `ChatViewController` and under the overriding tableveiew func like this
+5. register your custom xib/nib file. This can be done in viewDidLoad() 
 ```swift
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
+messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
+        // this registers nib aka xib, to this messageTableView with the identifier. if bundle is set to nil, Xcode will search current directory.
+```
+6. go back to `ChatViewController` and under the overriding tableveiew func like this
+```swift
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
+    let messageArr = ["First Message", "Second Message", "Third Message"]
+    cell.messageBody.text = messageArr[indexPath.row]
+    return cell // this method expects us to return smth  
+}
+```
+7. Declare numberOfRowsInSection
+```swift
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3  // we got 3 rows
     }
-    ```
+```
 Note that identifier cab be found at MessageCell.xib's identifier section, and give IndexPath just indexPath
+Remember, `CustomMessageCell` class has messageBody memeber variable, and you are setting that text depends on the row of the Table
 
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
