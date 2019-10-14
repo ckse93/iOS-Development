@@ -29,7 +29,8 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         messageTableView.delegate = self
         messageTableView.dataSource = self
-        messageTableView.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: "customMessageCell")  // this registers nib aka xib, to this messageTableView with the identifier
+        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
+        // this registers nib aka xib, to this messageTableView with the identifier. if bundle is set to nil, Xcode will search current directory.
         
         //TODO: Set yourself as the delegate of the text field here:
 
@@ -49,17 +50,20 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     //MARK: - TableView DataSource Methods
     
     
-    
-    //TODO: Declare cellForRowAtIndexPath here:
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
+        let messageArr = ["First Message", "Second Message", "Third Message"]
+        cell.messageBody.text = messageArr[indexPath.row]
+        return cell
     }
     
     
     
     //TODO: Declare numberOfRowsInSection here:
-    
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3  // we got 3 rows
+    }
+   
     
     //TODO: Declare tableViewTapped here:
     
