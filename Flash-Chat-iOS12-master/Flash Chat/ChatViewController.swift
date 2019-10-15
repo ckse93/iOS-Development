@@ -71,9 +71,6 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         messageTableView.estimatedRowHeight = 120
     }
     
-    
-    ///////////////////////////////////////////
-    
     //MARK:- TextField Delegate Methods
     
     
@@ -95,7 +92,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.5) {
             print("done editing")
-            self.heightConstraint.constant = 50
+            self.heightConstraint.constant = 50  // this is default height, you know that right? 
             self.view.layoutIfNeeded()
         }
     }
