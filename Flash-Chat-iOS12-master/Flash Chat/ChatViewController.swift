@@ -10,14 +10,13 @@ import UIKit
 import Firebase
 
 
-class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     // thi
     
     // Declare instance variables here
 
-    
-    // We've pre-linked the IBOutlets
+
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
@@ -33,15 +32,12 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         // this registers nib aka xib, to this messageTableView with the identifier. if bundle is set to nil, Xcode will search current directory.
         configureTableView()
         //TODO: Set yourself as the delegate of the text field here:
+        messageTextfield.delegate = self
 
         
         
         //TODO: Set the tapGesture here:
         
-        
-
-        //TODO: Register your MessageCell.xib file here:
-
         
     }
 
@@ -84,16 +80,25 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
     
     //TODO: Declare textFieldDidBeginEditing here:
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {  // this gets trigger when user tabs
+          // if something changes, redraw
+        UIView.animate(withDuration: 0.5, animations: {  // closure, you know this
+            print ("begin typing")
+            self.heightConstraint.constant = 308  // 50 is the margin
+            self.view.layoutIfNeeded()
+        })
+    }
     
     
     
     //TODO: Declare textFieldDidEndEditing here:
-    
-
-    
-    ///////////////////////////////////////////
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5) {
+            print("done editing")
+            self.heightConstraint.constant = 50
+            self.view.layoutIfNeeded()
+        }
+    }
     
     //MARK: - Send & Recieve from Firebase
     
