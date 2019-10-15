@@ -31,7 +31,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         messageTableView.dataSource = self
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         // this registers nib aka xib, to this messageTableView with the identifier. if bundle is set to nil, Xcode will search current directory.
-        
+        configureTableView()
         //TODO: Set yourself as the delegate of the text field here:
 
         
@@ -70,7 +70,10 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     
     //TODO: Declare configureTableView here:
-    
+    func configureTableView() {
+        messageTableView.rowHeight = UITableView.automaticDimension
+        messageTableView.estimatedRowHeight = 120
+    }
     
     
     ///////////////////////////////////////////
