@@ -111,6 +111,21 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 Note that identifier cab be found at MessageCell.xib's identifier section, and give IndexPath just indexPath
 Remember, `CustomMessageCell` class has messageBody memeber variable, and you are setting that text depends on the row of the Table
 
+7. Add animation when you touch the text input.
+ So when a user taps, it will increase height constaints to appropriate height and push the textfield all the way up.
+ we do this by delegating from UiTextviewDelegate. You need to set yourself as a delegate of that protocol, obvs.
+ you want to conformt to the protocol (you don't have to, but you if you want animation, you should) by defining `textFieldDidBeginEditing` and `textFieldDidEndEditing` like 
+ ```swift 
+ func textFieldDidBeginEditing(_ textField: UITextField) {  // this gets trigger when user tabs
+          // if something changes, redraw
+        UIView.animate(withDuration: 0.5, animations: {  // closure, you know this
+            print ("begin typing")
+            self.heightConstraint.constant = 308  // 50 is the margin
+            self.view.layoutIfNeeded()
+        })
+    }
+ ```
+
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
 - how to store data in cloud
