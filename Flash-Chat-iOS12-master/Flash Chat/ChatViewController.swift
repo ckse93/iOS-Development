@@ -37,11 +37,9 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         
         //TODO: Set the tapGesture here:
-        
-        
+        let tabGeature = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
+        messageTableView.addGestureRecognizer(tabGeature)
     }
-
-    ///////////////////////////////////////////
     
     //MARK: - TableView DataSource Methods
     
@@ -62,6 +60,10 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
    
     
     //TODO: Declare tableViewTapped here:
+    @objc func tableViewTapped() {
+        print ("triggered")
+        messageTextfield.endEditing(true)
+    }
     
     
     
@@ -89,10 +91,10 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     
     //TODO: Declare textFieldDidEndEditing here:
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {  // doesn't get called automatically. you need to call it. if user tabs somewhere other than this view element, shrink it down. you need a tab recognizer to implement this feature
         UIView.animate(withDuration: 0.5) {
             print("done editing")
-            self.heightConstraint.constant = 50  // this is default height, you know that right? 
+            self.heightConstraint.constant = 50  // this is default height, you know that right?
             self.view.layoutIfNeeded()
         }
     }
