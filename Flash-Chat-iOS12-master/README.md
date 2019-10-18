@@ -19,7 +19,7 @@
 - as you know, ctrl+click from VC1 and drag to VC2, generating a push segue.
 - open up the inspector panel from right hand side, give it a unique identifier 
 ### 2. Setting up user registration 
-- check out firebade iOS doc for more API calls 
+- check out firebase iOS doc for more API calls 
 0. Selet each password textview and check the box "secure text entry". or not, if you dont value your privacy
 1. `import Firebase`
 2. Inside `registerPressed()`, 
