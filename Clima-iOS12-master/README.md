@@ -1,5 +1,5 @@
 
-# Clima
+# Clima :sunny:
 
 ## Project Overview and Objectives 
 - this is a simple weather app that utilizes skeleton proj from LondonAppBrewery
