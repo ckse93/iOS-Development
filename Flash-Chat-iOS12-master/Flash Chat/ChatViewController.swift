@@ -15,7 +15,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     // thi
     
     // Declare instance variables here
-
+    var messageArray : [Message] = [Message]()
 
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var sendButton: UIButton!
@@ -39,6 +39,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         //TODO: Set the tapGesture here:
         let tabGeature = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         messageTableView.addGestureRecognizer(tabGeature)
+        retreveMessages()
     }
     
     //MARK: - TableView DataSource Methods
@@ -83,7 +84,7 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
           // if something changes, redraw
         UIView.animate(withDuration: 0.5, animations: {  // closure, you know this
             print ("begin typing")
-            self.heightConstraint.constant = 308  // 50 is the margin
+            self.heightConstraint.constant = 358  // 50 is the margin
             self.view.layoutIfNeeded()
         })
     }
@@ -128,7 +129,17 @@ class ChatViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     
     //TODO: Create the retrieveMessages method here:
-    
+    func retreveMessages() {
+        let messageDB = Database.database().reference().child("Messages") // now you got the pointer set up to the "Messages" storage in your db
+        //ask firebase to keep an eye out for new data
+        //so when there is a new event, then do stuff
+        messageDB.observe(.childAdded) { (snapshot) in  // this closure block is called whenever new item is added
+            let snapshotValue = snapshot.value as! Dictionary<String, String> // this is dictionary. How do you know this? well in `sendPressed()` you let messageDict as a dictionary
+            let text = snapshotValue["MessageBody"]! // get the value for the key "MessageValue"
+            let sender = snapshotValue["Sender"]!
+            print ("text : " + text + " from " + sender)
+        }
+    }
     
 
     
