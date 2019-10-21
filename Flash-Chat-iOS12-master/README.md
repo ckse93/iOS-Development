@@ -130,6 +130,13 @@ Remember, `CustomMessageCell` class has messageBody memeber variable, and you ar
  Note that we already have `message` datatype as a class, make an array of this datatype like `messageArray : [Message] = [Message]()`
  make `retreveMessage()` func. this need a DB reference that points to the DB that it will get the data from aka "Messages", and it will listen to any new item added to that db by using `.observe` and within the closure block, you get the message as the format it was sent. this case, you sent that as a dictionary of String, String (String key, String Value), and get the `snapshotValue["MessageBody"]` to retrieve the text value and `snapshotVlaue["sender"]` to get the sender 
 now, declare message variable to store the retrieved text and sender info, and store that to `self.messageArray` by append func. Remember, you are still in the closure block.
+after that you call `self.configureTableview()` and `self.messageTableView.reloadData()`
+change the numberofRowdata from 3 to messageArray.count
+
+9. implement `SVProgressbar`
+import SVProgressbar wherever you use it.
+call it by `SVProgressbar.show()`
+dismiss by `SVProgressbat.dismiss`
 
 ## Toolset / skills 
 - how to use 3rd party library (using cocoapod and plist), this is another tuesday for me now.
