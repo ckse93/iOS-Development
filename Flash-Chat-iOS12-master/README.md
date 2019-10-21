@@ -105,7 +105,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 7. Declare numberOfRowsInSection
 ```swift
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3  // we got 3 rows
+        return 3  // we got 3 rows, later, we will change this to dynamically display the rows 
     }
 ```
 Note that identifier cab be found at MessageCell.xib's identifier section, and give IndexPath just indexPath
