@@ -13,6 +13,8 @@
 		8439FB85237072D4006063A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8439FB84237072D4006063A7 /* Assets.xcassets */; };
 		8439FB88237072D4006063A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8439FB87237072D4006063A7 /* Preview Assets.xcassets */; };
 		8439FB8B237072D4006063A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8439FB89237072D4006063A7 /* LaunchScreen.storyboard */; };
+		8439FB942370777E006063A7 /* Staatliches-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8439FB932370777E006063A7 /* Staatliches-Regular.ttf */; };
+		8439FB962370CF12006063A7 /* profile pic.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 8439FB952370CF12006063A7 /* profile pic.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		8439FB87237072D4006063A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8439FB8A237072D4006063A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8439FB8C237072D4006063A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8439FB932370777E006063A7 /* Staatliches-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Staatliches-Regular.ttf"; sourceTree = "<group>"; };
+		8439FB952370CF12006063A7 /* profile pic.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile pic.JPG"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,12 @@
 		8439FB7D237072D1006063A7 /* ChanCard */ = {
 			isa = PBXGroup;
 			children = (
+				8439FB922370773C006063A7 /* fonts */,
 				8439FB7E237072D1006063A7 /* AppDelegate.swift */,
 				8439FB80237072D1006063A7 /* SceneDelegate.swift */,
 				8439FB82237072D1006063A7 /* ContentView.swift */,
 				8439FB84237072D4006063A7 /* Assets.xcassets */,
+				8439FB952370CF12006063A7 /* profile pic.JPG */,
 				8439FB89237072D4006063A7 /* LaunchScreen.storyboard */,
 				8439FB8C237072D4006063A7 /* Info.plist */,
 				8439FB86237072D4006063A7 /* Preview Content */,
@@ -73,6 +79,14 @@
 				8439FB87237072D4006063A7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8439FB922370773C006063A7 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8439FB932370777E006063A7 /* Staatliches-Regular.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,9 +147,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8439FB962370CF12006063A7 /* profile pic.JPG in Resources */,
 				8439FB8B237072D4006063A7 /* LaunchScreen.storyboard in Resources */,
 				8439FB88237072D4006063A7 /* Preview Assets.xcassets in Resources */,
 				8439FB85237072D4006063A7 /* Assets.xcassets in Resources */,
+				8439FB942370777E006063A7 /* Staatliches-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
