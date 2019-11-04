@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class RegisterViewController: UIViewController {
 
@@ -28,12 +29,14 @@ class RegisterViewController: UIViewController {
 
   // this will handle registration job and t e l e p o r t to the chat view controller.
     @IBAction func registerPressed(_ sender: AnyObject) {
+        SVProgressHUD.show()
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             // this closure block will be called once it is done. and the closure block will check for error and print statement accordingly
             if error != nil {
                 print("ERROR registration!!!!!")
                 print(error!)
             } else {
+                SVProgressHUD.dismiss()
                 print ("registration successful")
                 self.performSegue(withIdentifier: "goToChat", sender: self)  // this will teleport you to the chat view controller.
                 // but this is within the closure block. you need to designate which class this is coming from. 
