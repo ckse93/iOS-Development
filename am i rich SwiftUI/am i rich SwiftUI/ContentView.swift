@@ -10,12 +10,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+        ZStack{  // stacking element component on top of each other
+            Color(red:0.5,green:0.5,blue:0.5).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            // or you can use
+            //Color(.systemTeal)
+            VStack {
+                Text("I am rich")
+                    .font(.system(size: 45))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                Image("diamond")
+                    .resizable().aspectRatio(contentMode: .fit)
+                    .frame(width: 200, height: 200, alignment: .center)
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().previewDevice("iPhone Xʀ")  // option+click previewDevice property to see all the listing
     }
 }
