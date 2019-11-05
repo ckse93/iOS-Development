@@ -51,3 +51,29 @@ this is a simple ToDo list application that utilizes CoreData framework
   }
   ```
   this will toggle checkmark on / off when user selects the cell 
+  
+8. setting up the 'add' button to add entry for the todo list.
+  8-1. add 'bar button item' and change 'system item' to 'add' so + sign shows up
+  8-2. open up secobnd pane, open storyboard on the left, and ctrl+drag the button from storyboard to swift code
+  8-2. change iboutlet->action, any->UIBarButtonItem, name it `AddButtonPressed`
+  8-3. once this is pressed, UIAlert will be summoned with text field
+  8-4. you know what? look through the code 
+  ```swift
+      @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add entity", message: "", preferredStyle: .alert)
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "addy addy "
+            textField = alertTextField  // linking outer scope textField with inner scope alertTextField
+            print(alertTextField.text!)
+        }
+        let action = UIAlertAction(title: "Add item", style: .default) { (action) in  // tis gets triggered when you hit 'Add item button'
+            self.itemArr.append(textField.text!)
+            self.tableView.reloadData()
+            print(textField.text!)
+        } 
+        
+        alert.addAction(action)  // this is mapping alert and action altogher so it can work with each other
+        present(alert, animated: true, completion: nil)
+    }
+  ```
