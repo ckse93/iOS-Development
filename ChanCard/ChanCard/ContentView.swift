@@ -18,8 +18,9 @@ struct ContentView: View {
                 Image("profile")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .position(x : 99, y : 120)
                     .frame(width: 200,height: 200)
-                    .scaleEffect(x: 2,y: 2,anchor: .center)
+                    .scaleEffect(x: 2.5,y: 2.5,anchor: .center)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white,lineWidth: 6))
                 Text("Chan Jung")
@@ -30,19 +31,22 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 25))
                 .bold()
+            Text("Medtronic")
+                .foregroundColor(.white)
+                .font(Font.custom("Courier", size: 25))  // Courier is in the default system
                 Divider()
-                Capsule()
-                    .frame(width: 330, height: 90)  // use frame to change size
-                    .colorInvert()
-                    .overlay(
-                        VStack{
-                            HStack{
-                                Image(systemName: "phone.fill")
-                                Text("(206) 735 1194")
-                            }
-                            Text("www.github.com/ckse93")
-                            Text("ckse93@gmail.com")
+            Capsule()
+                .frame(width: 330, height: 90)  // use frame to change size
+                .colorInvert()
+                .overlay(
+                    VStack{
+                        HStack{
+                            Image(systemName: "phone.fill")
+                            Text("(206) 735 1194")
                         }
+                        Text("www.github.com/ckse93")
+                        Text("ckse93@gmail.com")
+                    }
                 )
                 
             }
