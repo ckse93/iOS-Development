@@ -21,7 +21,7 @@ this is a simple ToDo list application that utilizes CoreData framework
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArr.count
     }
-    ```
+```
 6. set up override methods for tableviews 
   ```swift 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,5 +40,14 @@ this is a simple ToDo list application that utilizes CoreData framework
         print(itemArr[indexPath.row]) . // when selecting a cell, print the element on the console 
         tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
     }
-    ```
+```
 7. set up the checkmark 
+  inside that func up there, add this: 
+  ```swift
+  if (tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+  } else {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+  }
+  ```
+  this will toggle checkmark on / off when user selects the cell 
