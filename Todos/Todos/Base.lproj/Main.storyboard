@@ -29,7 +29,16 @@
                             <outlet property="delegate" destination="cKb-4z-Ojl" id="e8P-SL-iIe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todo" largeTitleDisplayMode="always" id="nnh-qJ-NTG"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Todo" largeTitleDisplayMode="always" id="nnh-qJ-NTG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YaL-ma-bQU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="AddButtonPressed:" destination="cKb-4z-Ojl" id="BaB-ak-yml"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blc-gd-hcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

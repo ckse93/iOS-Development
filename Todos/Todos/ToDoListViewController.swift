@@ -10,7 +10,7 @@ import UIKit
 
 class ToDoViewListController: UITableViewController {
     
-    let itemArr = ["buy eggs", "cancel chiropractor", "make meme"]
+    var itemArr = ["buy eggs", "cancel chiropractor", "make meme"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,5 +39,29 @@ class ToDoViewListController: UITableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
     }
+    
+    // MARK --------- add new enetity func
+    
+    @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add entity", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add item", style: .default) { (action) in
+            self.itemArr.append(textField.text!)
+            self.tableView.reloadData()
+            print(textField.text!)
+            
+        }  // this is the 'add' button
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "addy addy "
+            textField = alertTextField  // linking outer scope textField with inner scope alertTextField
+            print(alertTextField.text!)
+        }
+        alert.addAction(action)  // this is mapping alert and action altogher so it can work with each other
+        
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 }
 
