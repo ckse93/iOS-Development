@@ -29,5 +29,15 @@ class ToDoViewListController: UITableViewController {
     }
     
     // MARK ---------------TableView Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  // gets triggered when such cell is selected.
+        print(itemArr[indexPath.row])
+        if (tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark) {  // toggling checkmarks
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
+    }
 }
 
