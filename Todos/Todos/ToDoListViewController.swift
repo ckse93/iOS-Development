@@ -11,9 +11,15 @@ import UIKit
 class ToDoViewListController: UITableViewController {
     
     var itemArr = ["buy eggs", "cancel chiropractor", "make meme"]
+    
+    let saveData =  UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let loadData = saveData.array(forKey: "ToDoListArray") as? [String] {
+            itemArr = loadData
+            tableView.reloadData()
+        }
         // Do any additional setup after loading the view.
     }
 // MARK ------- TableView Datasource Methods
@@ -45,22 +51,20 @@ class ToDoViewListController: UITableViewController {
     @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add entity", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add item", style: .default) { (action) in
-            self.itemArr.append(textField.text!)
-            self.tableView.reloadData()
-            print(textField.text!)
-            
-        }  // this is the 'add' button
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "addy addy "
             textField = alertTextField  // linking outer scope textField with inner scope alertTextField
             print(alertTextField.text!)
         }
+        let action = UIAlertAction(title: "Add item", style: .default) { (action) in  // tis gets triggered when you hit 'Add item button'
+            self.itemArr.append(textField.text!)
+            self.saveData.set(self.itemArr, forKey: "ToDoListArray")
+            self.tableView.reloadData()
+            print(textField.text!)
+        } 
+        
         alert.addAction(action)  // this is mapping alert and action altogher so it can work with each other
-        
-        
         present(alert, animated: true, completion: nil)
-        
     }
     
 }
