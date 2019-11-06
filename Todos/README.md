@@ -5,11 +5,11 @@ this is a simple ToDo list application that utilizes CoreData framework
 1. goto main storyboard and add TableViewController, make it the initial ViewController by moving an arrow or set it the initial in the property panel, and delete the dangling VC 
 2. Click on the prototype cell, and give it an identifier we can use later in swift file
 3. change the name of the main swift file and class name into `ToDoListViewController`, and ToDoListViewController will inherit from `UITableViewController`.
-  3-1. We do this so we don't have to go through delegating. all the things we need is in `TableViewController` class, and we just inherited from it 
+    * We do this so we don't have to go through delegating. all the things we need is in `TableViewController` class, and we just inherited from it 
 4. Add navigation controller to TableViewController 
-  4-1. select TableViewController, go to 'Editor'(way up there, hidden in the full screen)-> 'Embed in' -> 'Navigation Controller'
-  4-2. select Navigation Bar at 'navigation controller scene', change the bar tint to blue 
-  4-3. change title text to white at 'Title Text Attribute'
+   * select TableViewController, go to 'Editor'(way up there, hidden in the full screen)-> 'Embed in' -> 'Navigation Controller'
+   * select Navigation Bar at 'navigation controller scene', change the bar tint to blue 
+   * change title text to white at 'Title Text Attribute'
 5. populating tableview with items you put in.
   ```swift 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // this will populate the cells with contents 
@@ -53,11 +53,11 @@ this is a simple ToDo list application that utilizes CoreData framework
   this will toggle checkmark on / off when user selects the cell 
   
 8. setting up the 'add' button to add entry for the todo list.
-  8-1. add 'bar button item' and change 'system item' to 'add' so + sign shows up
-  8-2. open up secobnd pane, open storyboard on the left, and ctrl+drag the button from storyboard to swift code
-  8-2. change iboutlet->action, any->UIBarButtonItem, name it `AddButtonPressed`
-  8-3. once this is pressed, UIAlert will be summoned with text field
-  8-4. you know what? look through the code 
+    * add 'bar button item' and change 'system item' to 'add' so + sign shows up  
+    * open up secobnd pane, open storyboard on the left, and ctrl+drag the button from storyboard to swift code
+    * change iboutlet->action, any->UIBarButtonItem, name it `AddButtonPressed`
+    * once this is pressed, UIAlert will be summoned with text field
+    * you know what? look through the code 
   ```swift
       @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
@@ -77,3 +77,10 @@ this is a simple ToDo list application that utilizes CoreData framework
         present(alert, animated: true, completion: nil)
     }
   ```
+9. saving data
+    * as a global variable,`let saveData = UserDefault.standard` this is a key-value pair we will make use of later on for saving/loading the data
+    * within `AddButtonPressed`, wrtie `saveData.set(self.itemArr, forKey: "ToDoListArray")` this is saving `itemArr` as an entity that is retrivible through key, "ToDoListArray"
+    * saving data is done, so you need to load it up, so goto AppDelegate.swift and look for `didFinishLaunchingWithOptions`
+    * within that override func `print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)` to check the directory and go to thjat directory after you launch it, and see if it saved the new entry data and whatnot
+    * :warning: so the problem is that if the list gets long enough, the checkmark up in the lower index item will be reused in later index item, you need class array, instead of string item, to display this shit properly
+    
