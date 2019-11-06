@@ -20,6 +20,22 @@ class ToDoViewListController: UITableViewController {
         let newItem = Item()
         newItem.Todo = "tell Mike"
         itemArr.append(newItem)
+        let newItem1 = Item()
+        newItem1.Todo = "prep for iOS"
+        itemArr.append(newItem1)
+        let newItem2 = Item()
+        newItem2.Todo = "go home"
+        itemArr.append(newItem2)
+        let newItem3 = Item()
+        newItem3.Todo = "kiss wifey"
+        itemArr.append(newItem3)
+        let newItem4 = Item()
+        newItem4.Todo = "lol"
+        itemArr.append(newItem4)
+        let newItem5 = Item()
+        newItem5.Todo = "lalalalla"
+        itemArr.append(newItem5)
+        
         
         if let loadData = saveData.array(forKey: "ToDoListArray") as? [Item] {
             itemArr = loadData
@@ -28,29 +44,35 @@ class ToDoViewListController: UITableViewController {
         // Do any additional setup after loading the view.
     }
 // MARK ------- TableView Datasource Methods
-    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           return itemArr.count
+       }
+       
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         cell.textLabel?.text = itemArr[indexPath.row].Todo
+        
+        var str = " false"
+        if (itemArr[indexPath.row].isDone) {
+            str = " true"
+        }
+        print ("\(indexPath.row)" + str)
+        if (itemArr[indexPath.row].isDone) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArr.count
-    }
-    
     // MARK ---------------TableView Delegate
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  // gets triggered when such cell is selected.
-        print(itemArr[indexPath.row].Todo)
-        
-        if itemArr[indexPath.row].isDone == false {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            itemArr[indexPath.row].isDone = true
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            itemArr[indexPath.row].isDone = false
+        itemArr[indexPath.row].isDone = !itemArr[indexPath.row].isDone
+        var str = " false"
+        if (itemArr[indexPath.row].isDone) {
+            str = " true"
         }
+        print ("didSelectRowAt " + "\(indexPath.row)" + str)
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
     }
