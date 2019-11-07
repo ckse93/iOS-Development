@@ -12,11 +12,16 @@ class ToDoViewListController: UITableViewController {
     
     var itemArr = [Item]()
     
-    let saveData =  UserDefaults.standard
+    let saveData =  UserDefaults.standard // we dont use this because it has limitations
+    
+   let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
+    
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+         
+        super.viewDidLoad()
+        print(dataFilePath)
         let newItem = Item()
         newItem.Todo = "tell Mike"
         itemArr.append(newItem)
@@ -57,22 +62,20 @@ class ToDoViewListController: UITableViewController {
             str = " true"
         }
         print ("\(indexPath.row)" + str)
-        if (itemArr[indexPath.row].isDone) {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+        cell.accessoryType = itemArr[indexPath.row].isDone ? .checkmark : .none  // ternery statement. if isdone is true, set it to .checkmark, if else, set to none
+        
         return cell
     }
     
     // MARK ---------------TableView Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  // gets triggered when such cell is selected.
-        itemArr[indexPath.row].isDone = !itemArr[indexPath.row].isDone
+        itemArr[indexPath.row].isDone = !itemArr[indexPath.row].isDone  // toggling in between true and false
         var str = " false"
         if (itemArr[indexPath.row].isDone) {
             str = " true"
         }
         print ("didSelectRowAt " + "\(indexPath.row)" + str)
+        SaveData()
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
     }
@@ -92,13 +95,23 @@ class ToDoViewListController: UITableViewController {
             newEntry.Todo = textField.text!
             self.itemArr.append(newEntry)
             print("now saving...")
-            self.saveData.set(self.itemArr, forKey: "ToDoListArray")
+            //self.saveData.set(self.itemArr, forKey: "ToDoListArray")
+            self.SaveData()
             self.tableView.reloadData()
-            print(newEntry.Todo)
         } 
         
         alert.addAction(action)  // this is mapping alert and action altogher so it can work with each other
         present(alert, animated: true, completion: nil)
+    }
+    
+    func SaveData(){
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(itemArr)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("error encoding data")
+        }
     }
     
 }
