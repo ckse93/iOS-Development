@@ -2,15 +2,15 @@
 this is a simple ToDo list application that utilizes CoreData framework
 
 ## dev process 
-1. goto main storyboard and add TableViewController, make it the initial ViewController by moving an arrow or set it the initial in the property panel, and delete the dangling VC 
-2. Click on the prototype cell, and give it an identifier we can use later in swift file
-3. change the name of the main swift file and class name into `ToDoListViewController`, and ToDoListViewController will inherit from `UITableViewController`.
+1. goto main storyboard and add TableViewController, make it the initial ViewController by moving an arrow or set it the initial in the property panel, and delete the dangling VC.
+2. Click on the prototype cell, and give it an identifier we can use later in swift file.
+3. change the name of the main swift file and class name into `ToDoListViewController`, and ToDoListViewController will inherit from `UITableViewController`
     * We do this so we don't have to go through delegating. all the things we need is in `TableViewController` class, and we just inherited from it 
-4. Add navigation controller to TableViewController 
+**4. Add navigation controller to TableViewController **
    * select TableViewController, go to 'Editor'(way up there, hidden in the full screen)-> 'Embed in' -> 'Navigation Controller'
    * select Navigation Bar at 'navigation controller scene', change the bar tint to blue 
    * change title text to white at 'Title Text Attribute'
-5. populating tableview with items you put in.
+**5. populating tableview with items you put in.**
   ```swift 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // this will populate the cells with contents 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath) 
@@ -22,7 +22,7 @@ this is a simple ToDo list application that utilizes CoreData framework
         return itemArr.count
     }
 ```
-6. set up override methods for tableviews 
+**6. set up override methods for tableviews **
   ```swift 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
@@ -41,7 +41,8 @@ this is a simple ToDo list application that utilizes CoreData framework
         tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
     }
 ```
-7. set up the checkmark 
+**7. set up the checkmark **
+
   inside that func up there, add this: 
   ```swift
   if (tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark) {
@@ -83,4 +84,11 @@ this is a simple ToDo list application that utilizes CoreData framework
     * saving data is done, so you need to load it up, so goto AppDelegate.swift and look for `didFinishLaunchingWithOptions`
     * within that override func `print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)` to check the directory and go to thjat directory after you launch it, and see if it saved the new entry data and whatnot
     * :warning: so the problem is that if the list gets long enough, the checkmark up in the lower index item will be reused in later index item, you need class array, instead of string item, to display this shit properly
-    
+
+10. individual checkmark setup
+    * we need to convert [String] into [ToDo], class ToDo will have contents, aka, what ToDo element, and isDone, basically if you are done with the task at hand
+    * in `didSelectRowAt`, enable toggling between true and false by `itemArr[indexPath.row].isDone = !itemArr[indexPath.row].isDone` and call `reloadData()`, this will call `didSelectRowAt`, and this is where you need to toggle checkmark, and this time, we will use ternary operator like so : 
+    ```swift
+    cell.accessoryType = itemArr[indexPath.row].isDone ? .checkmark : .none  // ternery statement. if isdone is true, set it to .checkmark, if else, set to none
+    ```
+11. 
