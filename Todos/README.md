@@ -91,4 +91,39 @@ this is a simple ToDo list application that utilizes CoreData framework
     ```swift
     cell.accessoryType = itemArr[indexPath.row].isDone ? .checkmark : .none  // ternery statement. if isdone is true, set it to .checkmark, if else, set to none
     ```
-11. 
+11. :heavy_exclamation_mark: right now, 'add' functionality doesn't work, why? it currently uses `UserDefault`, and UserDefault can only store some primitive data types aka it cannot store your custom class array, we need to use different stuff to make this happen 
+    * create 
+    ```swift 
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
+    ```
+    * in `AddButtonPressed`, delete where you save the data to UserDefault, add this 
+    ```swift
+    let encoder = PropertyListEncoder()
+            do {
+                let data = try encoder.encode(self.itemArr) // this will throw error, you need to make your class confrom to protocol.
+                try data.write(to: self.dataFilePath!)
+            } catch {
+                print("error encoding data")
+            }
+    ```
+    * Since it throws error that `item` is not encodable, we need to conform to protocol and make it encodable.
+    ```swift
+    class Item : Encodable {  // as long as class only has primitive data type aka int, string, double.. it will work
+    var Todo : String = ""
+    var isDone : Bool = false
+    }
+    ```
+    * ok cool, now lets make `SaveData()`
+    ```swift
+    func SaveData(){
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(itemArr)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("error encoding data")
+        }
+    }
+    ``` 
+    and call this whenever you manipulate data. this will tap on the global variable, so you dont need to pass in data, at the moment 
+    
