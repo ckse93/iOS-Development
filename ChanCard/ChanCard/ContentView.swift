@@ -39,13 +39,20 @@ struct ContentView: View {
                 .frame(width: 330, height: 90)  // use frame to change size
                 .colorInvert()
                 .overlay(
-                    VStack{
+                    VStack(spacing: 3){
                         HStack{
-                            Image(systemName: "phone.fill")
+                            Image(systemName: "phone.fill").imageScale(.small)
                             Text("(206) 735 1194")
+                            
                         }
-                        Text("www.github.com/ckse93")
-                        Text("ckse93@gmail.com")
+                        HStack{
+                            Image (systemName : "arrow.branch").imageScale(.small)
+                            Text("www.github.com/ckse93")
+                        }
+                        HStack{
+                            Image(systemName : "envelope.fill").imageScale(.small)
+                            Text("ckse93@gmail.com")
+                        }
                     }
                 )
                 
