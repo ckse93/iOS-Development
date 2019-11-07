@@ -2,9 +2,9 @@
 this is a simple ToDo list application that utilizes CoreData framework
 
 ## dev process 
-**1. goto main storyboard and add TableViewController, make it the initial ViewController by moving an arrow or set it the initial in the property panel, and delete the dangling VC **
-**2. Click on the prototype cell, and give it an identifier we can use later in swift file**
-**3. change the name of the main swift file and class name into `ToDoListViewController`, and ToDoListViewController will inherit from `UITableViewController`.**
+1. goto main storyboard and add TableViewController, make it the initial ViewController by moving an arrow or set it the initial in the property panel, and delete the dangling VC.
+2. Click on the prototype cell, and give it an identifier we can use later in swift file.
+3. change the name of the main swift file and class name into `ToDoListViewController`, and ToDoListViewController will inherit from `UITableViewController`
     * We do this so we don't have to go through delegating. all the things we need is in `TableViewController` class, and we just inherited from it 
 **4. Add navigation controller to TableViewController **
    * select TableViewController, go to 'Editor'(way up there, hidden in the full screen)-> 'Embed in' -> 'Navigation Controller'
