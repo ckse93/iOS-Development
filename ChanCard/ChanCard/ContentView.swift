@@ -34,7 +34,7 @@ struct ContentView: View {
             Text("Medtronic")
                 .foregroundColor(.white)
                 .font(Font.custom("Courier", size: 25))  // Courier is in the default system
-                Divider()
+                Divider().hidden()
             Capsule()
                 .frame(width: 330, height: 90)  // use frame to change size
                 .colorInvert()
