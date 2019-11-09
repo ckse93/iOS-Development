@@ -21,7 +21,7 @@ class ToDoViewListController: UITableViewController {
         
          
         super.viewDidLoad()
-        print(dataFilePath)
+        print(dataFilePath)/*
         let newItem = Item()
         newItem.Todo = "tell Mike"
         itemArr.append(newItem)
@@ -40,12 +40,15 @@ class ToDoViewListController: UITableViewController {
         let newItem5 = Item()
         newItem5.Todo = "lalalalla"
         itemArr.append(newItem5)
+        */
         
         
+        LoadData()
+        /*
         if let loadData = saveData.array(forKey: "ToDoListArray") as? [Item] {
             itemArr = loadData
             tableView.reloadData()
-        }
+        }*/
         // Do any additional setup after loading the view.
     }
 // MARK ------- TableView Datasource Methods
@@ -103,6 +106,8 @@ class ToDoViewListController: UITableViewController {
         alert.addAction(action)  // this is mapping alert and action altogher so it can work with each other
         present(alert, animated: true, completion: nil)
     }
+
+// MARK --------------------SaveData()---------------------------------------------------------------------
     
     func SaveData(){
         let encoder = PropertyListEncoder()
@@ -113,6 +118,17 @@ class ToDoViewListController: UITableViewController {
             print("error encoding data")
         }
     }
-    
+// MARK -----------------LoadData()---------------------------------------------------------------------
+    func LoadData() {
+        if let data = try? Data(contentsOf: dataFilePath!) {  // optional binding
+            let decoder = PropertyListDecoder()
+            do {
+                itemArr = try decoder.decode([Item].self, from: data) // we tap into 'data' cus optional binding was successful
+            } catch {
+                print ("error loading data")
+            }
+        }
+        
+    }
 }
 
