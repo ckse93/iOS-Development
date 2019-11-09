@@ -126,4 +126,17 @@ this is a simple ToDo list application that utilizes CoreData framework
     }
     ``` 
     and call this whenever you manipulate data. this will tap on the global variable, so you dont need to pass in data, at the moment 
-    
+    * ok we can save data, now we need `LoadData()` make func accordingly 
+    ```swift
+    func LoadData() {
+        if let data = try? Data(contentsOf: dataFilePath!) {  // optional binding
+            let decoder = PropertyListDecoder()
+            do {
+                itemArr = try decoder.decode([Item].self, from: data) // we tap into 'data' cus optional binding was successful
+            } catch {
+                print ("error loading data")
+            }
+        }
+    }
+    ```
+    since we tap into `Item` datatype, let's change protocol of `Item` from Encodable to Encodabl, Decodable. Or you can jusdt make it `Codeable`. Codable covers both En/Decodable, as long as you are using it over Swift 4 or higher 
