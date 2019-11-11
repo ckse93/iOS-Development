@@ -14,6 +14,7 @@
 		8439FBAD2371C90E006063A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8439FBAC2371C90E006063A7 /* Assets.xcassets */; };
 		8439FBB02371C90F006063A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8439FBAE2371C90F006063A7 /* LaunchScreen.storyboard */; };
 		8439FBB823726CF1006063A7 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439FBB723726CF1006063A7 /* item.swift */; };
+		8443EAA6237A093D00ADBD7F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8443EAA4237A093D00ADBD7F /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8439FBAF2371C90F006063A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8439FBB12371C90F006063A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8439FBB723726CF1006063A7 /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
+		8443EAA5237A093D00ADBD7F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				8439FBB723726CF1006063A7 /* item.swift */,
+				8443EAA4237A093D00ADBD7F /* DataModel.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8439FBB823726CF1006063A7 /* item.swift in Sources */,
+				8443EAA6237A093D00ADBD7F /* DataModel.xcdatamodeld in Sources */,
 				8439FBA82371C90C006063A7 /* ToDoListViewController.swift in Sources */,
 				8439FBA42371C90C006063A7 /* AppDelegate.swift in Sources */,
 				8439FBA62371C90C006063A7 /* SceneDelegate.swift in Sources */,
@@ -364,6 +368,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8443EAA4237A093D00ADBD7F /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8443EAA5237A093D00ADBD7F /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 8443EAA5237A093D00ADBD7F /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8439FB982371C90C006063A7 /* Project object */;
 }
