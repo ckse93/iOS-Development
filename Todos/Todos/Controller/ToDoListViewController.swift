@@ -21,35 +21,8 @@ class ToDoViewListController: UITableViewController {
         
          
         super.viewDidLoad()
-        print(dataFilePath)/*
-        let newItem = Item()
-        newItem.Todo = "tell Mike"
-        itemArr.append(newItem)
-        let newItem1 = Item()
-        newItem1.Todo = "prep for iOS"
-        itemArr.append(newItem1)
-        let newItem2 = Item()
-        newItem2.Todo = "go home"
-        itemArr.append(newItem2)
-        let newItem3 = Item()
-        newItem3.Todo = "kiss wifey"
-        itemArr.append(newItem3)
-        let newItem4 = Item()
-        newItem4.Todo = "lol"
-        itemArr.append(newItem4)
-        let newItem5 = Item()
-        newItem5.Todo = "lalalalla"
-        itemArr.append(newItem5)
-        */
-        
-        
+        print(dataFilePath)
         LoadData()
-        /*
-        if let loadData = saveData.array(forKey: "ToDoListArray") as? [Item] {
-            itemArr = loadData
-            tableView.reloadData()
-        }*/
-        // Do any additional setup after loading the view.
     }
 // MARK ------- TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
