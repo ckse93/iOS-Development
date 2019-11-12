@@ -15,15 +15,15 @@ class ToDoViewListController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         // we are tapping into UIApplication class's shared singleton object, which corrosponds to current App as an object, tapping into its delegate, and we are casting it as AppDelegate
     
-    let saveData =  UserDefaults.standard // we dont use this because it has limitations
+    //let saveData =  UserDefaults.standard // we dont use this because it has limitations
     
-   let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+   let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)  // we use this to see sql data
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print(dataFilePath)
-        //LoadData()
+        LoadData()
     }
 // MARK:TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,16 +103,23 @@ class ToDoViewListController: UITableViewController {
         }
     }
 // MARK: -----------------LoadData()---------------------------------------------------------------------
-//    func LoadData() {
-//        if let data = try? Data(contentsOf: dataFilePath!) {  // optional binding
-//            let decoder = PropertyListDecoder()
-//            do {
-//                itemArr = try decoder.decode([Item].self, from: data) // we tap into 'data' cus optional binding was successful
-//            } catch {
-//                print ("error loading data")
-//            }
-//        }
-//
-//    }
+    func LoadData() {
+        /*if let data = try? Data(contentsOf: dataFilePath!) {  // optional binding
+            let decoder = PropertyListDecoder()
+            do {
+                itemArr = try decoder.decode([Item].self, from: data) // we tap into 'data' cus optional binding was successful
+            } catch {
+                print ("error loading data")
+            }
+        }
+*/
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            //try context.fetch(request)
+            itemArr = try context.fetch(request)
+        } catch {
+            print("\(error)")
+        }
+    }
 }
 
