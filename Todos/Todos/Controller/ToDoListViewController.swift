@@ -110,6 +110,7 @@ class ToDoViewListController: UITableViewController {
         } catch {
             print("\(error)")
         }
+        tableView.reloadData()
     }
 
 }
@@ -120,10 +121,27 @@ extension ToDoViewListController : UISearchBarDelegate {
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)  // this will look for the searchBar.text within title colum inside the CoreData, ignoridng case and dialects
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
-        
+        print("searching : " + searchBar.text!)
         // now register predicate and sortDestriptor
         request.predicate = predicate
         request.sortDescriptors = [sortDescriptor]
         LoadData(with: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {  // whenever there is a change in textbar
+        if searchBar.text?.count == 0 {
+            LoadData()
+            DispatchQueue.main.async {  // assigning this task to main thread
+                searchBar.resignFirstResponder()  // dismissing keyboard and flashing cursor
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text? = ""
+        LoadData()
+        DispatchQueue.main.async {  // assigning this task to main thread
+            searchBar.resignFirstResponder()  // dismissing keyboard and flashing cursor
+        }
     }
 }
