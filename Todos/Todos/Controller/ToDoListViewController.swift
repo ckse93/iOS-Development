@@ -12,11 +12,14 @@ import CoreData
 class ToDoViewListController: UITableViewController {
     
     var itemArr = [Item]()
+    var selectedCategory : Categories? {
+        didSet{  // this blok will execute as selectedCategory get set with a value
+            print ("data has been set!")
+            LoadData()
+        }
+    }
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         // we are tapping into UIApplication class's shared singleton object, which corrosponds to current App as an object, tapping into its delegate, and we are casting it as AppDelegate
-    
-    //let saveData =  UserDefaults.standard // we dont use this because it has limitations
-    
    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)  // we use this to see sql data
     
 
@@ -33,12 +36,6 @@ class ToDoViewListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         cell.textLabel?.text = itemArr[indexPath.row].title
-        
-        var str = " false"
-        if (itemArr[indexPath.row].isDone) {
-            str = " true"
-        }
-        print ("\(indexPath.row)" + str)
         cell.accessoryType = itemArr[indexPath.row].isDone ? .checkmark : .none  // ternery statement. if isdone is true, set it to .checkmark, if else, set to none
         
         return cell
@@ -47,11 +44,6 @@ class ToDoViewListController: UITableViewController {
     // MARK: - TableView Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  // gets triggered when such cell is selected.
         itemArr[indexPath.row].isDone = !itemArr[indexPath.row].isDone  // toggling in between true and false
-        var str = " false"
-        if (itemArr[indexPath.row].isDone) {
-            str = " true"
-        }
-        print ("didSelectRowAt " + "\(indexPath.row)" + str)
         SaveData()
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
@@ -72,6 +64,7 @@ class ToDoViewListController: UITableViewController {
             let newEntry = Item(context: self.context)
             newEntry.title = textField.text!
             newEntry.isDone = false
+            newEntry.parentCategory = self.selectedCategory
             self.itemArr.append(newEntry)
             print("now saving...")
             self.SaveData()
@@ -89,13 +82,6 @@ class ToDoViewListController: UITableViewController {
 // MARK: - SaveData()
     
     func SaveData(){
-        /* let encoder = PropertyListEncoder()  // not using this on coredata
-        do {
-            let data = try encoder.encode(itemArr)
-            try data.write(to: dataFilePath!)
-        } catch {
-            print("error encoding data")
-        }*/
         do {
             try context.save()
         } catch {
@@ -104,6 +90,9 @@ class ToDoViewListController: UITableViewController {
     }
 // MARK: - LoadData()
     func LoadData(with request : NSFetchRequest<Item> = Item.fetchRequest()) {  // "with" for external call, and if there is no argument, Item.fetchRequest() is the default parameter
+        let predicate = NSPredicate(format: "parentCategory.name MATCHES[cd] %@", selectedCategory!.name!)
+        print("selectedCategory:" + selectedCategory!.name!)
+        request.predicate = predicate
         do {
             //try context.fetch(request)
             itemArr = try context.fetch(request)

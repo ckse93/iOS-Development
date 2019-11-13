@@ -14,6 +14,7 @@
 		8439FBAD2371C90E006063A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8439FBAC2371C90E006063A7 /* Assets.xcassets */; };
 		8439FBB02371C90F006063A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8439FBAE2371C90F006063A7 /* LaunchScreen.storyboard */; };
 		8443EAA6237A093D00ADBD7F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8443EAA4237A093D00ADBD7F /* DataModel.xcdatamodeld */; };
+		8456794E237C7D1C0037979F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456794D237C7D1C0037979F /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8439FBAF2371C90F006063A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8439FBB12371C90F006063A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8443EAA5237A093D00ADBD7F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		8456794D237C7D1C0037979F /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		8439FBBA23726E67006063A7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8456794D237C7D1C0037979F /* CategoryViewController.swift */,
 				8439FBA72371C90C006063A7 /* ToDoListViewController.swift */,
 			);
 			path = Controller;
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8456794E237C7D1C0037979F /* CategoryViewController.swift in Sources */,
 				8443EAA6237A093D00ADBD7F /* DataModel.xcdatamodeld in Sources */,
 				8439FBA82371C90C006063A7 /* ToDoListViewController.swift in Sources */,
 				8439FBA42371C90C006063A7 /* AppDelegate.swift in Sources */,
