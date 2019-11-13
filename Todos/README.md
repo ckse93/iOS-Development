@@ -140,3 +140,23 @@ this is a simple ToDo list application that utilizes CoreData framework
     }
     ```
     since we tap into `Item` datatype, let's change protocol of `Item` from Encodable to Encodabl, Decodable. Or you can jusdt make it `Codeable`. Codable covers both En/Decodable, as long as you are using it over Swift 4 or higher 
+    
+# CoreData shiz
+0. things to rember. 
+   * import coredata by file->new->file->Data Model under CoreData
+   * `import CoreData` whenever you use CoreData module? 
+   * AppDelegate.swift has all the overwrridable func listed? with the new datamodel designated? 
+1. Ok, a bit of sidetrack, but this is important. CoreData is basically like SQL it does CRUD  
+   **C**reate data   
+   **R**ead data  
+   **U**pdate data  
+   **D**estroy data  
+2. goto DataModel.xcdata..smth and add Entity. this is your struct/class. attribute is like member variable for that struct. 
+2. and this work kinda same as git, we do stuff and then commit, then push right? same here. 
+   so you have to do all the changes (save,delete,stuff) through context
+   ```swift
+   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        // we are tapping into UIApplication class's shared singleton object, which corrosponds to current App as an object, tapping into its delegate, and we are casting it as AppDelegate
+   ``` 
+   this is a global variable, because we are using it a lot 
+3. 
