@@ -25,7 +25,7 @@ class ToDoViewListController: UITableViewController {
         print(dataFilePath)
         LoadData()
     }
-// MARK:TableView Datasource Methods
+// MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            return itemArr.count
        }
@@ -44,7 +44,7 @@ class ToDoViewListController: UITableViewController {
         return cell
     }
     
-    // MARK: ---------------TableView Delegate
+    // MARK: - TableView Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  // gets triggered when such cell is selected.
         itemArr[indexPath.row].isDone = !itemArr[indexPath.row].isDone  // toggling in between true and false
         var str = " false"
@@ -57,7 +57,7 @@ class ToDoViewListController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true) // if this is not called, a cell will stay selected.
     }
     
-    // MARK: --------- add new enetity func
+    // MARK: - add new enetity func
     
     @IBAction func AddButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
@@ -86,7 +86,7 @@ class ToDoViewListController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
 
-// MARK: --------------------SaveData()---------------------------------------------------------------------
+// MARK: - SaveData()
     
     func SaveData(){
         /* let encoder = PropertyListEncoder()  // not using this on coredata
@@ -102,18 +102,8 @@ class ToDoViewListController: UITableViewController {
             print("error saving context, \(error)")
         }
     }
-// MARK: -----------------LoadData()---------------------------------------------------------------------
-    func LoadData() {
-        /*if let data = try? Data(contentsOf: dataFilePath!) {  // optional binding
-            let decoder = PropertyListDecoder()
-            do {
-                itemArr = try decoder.decode([Item].self, from: data) // we tap into 'data' cus optional binding was successful
-            } catch {
-                print ("error loading data")
-            }
-        }
-*/
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
+// MARK: - LoadData()
+    func LoadData(with request : NSFetchRequest<Item> = Item.fetchRequest()) {  // "with" for external call, and if there is no argument, Item.fetchRequest() is the default parameter
         do {
             //try context.fetch(request)
             itemArr = try context.fetch(request)
@@ -121,5 +111,19 @@ class ToDoViewListController: UITableViewController {
             print("\(error)")
         }
     }
+
 }
 
+//MARK: - Search Bar Methods
+extension ToDoViewListController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {  // query data here
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)  // this will look for the searchBar.text within title colum inside the CoreData, ignoridng case and dialects
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        
+        // now register predicate and sortDestriptor
+        request.predicate = predicate
+        request.sortDescriptors = [sortDescriptor]
+        LoadData(with: request)
+    }
+}
