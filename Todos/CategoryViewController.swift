@@ -5,6 +5,8 @@
 //  Created by Chan Jung on 11/13/19.
 //  Copyright © 2019 Chan Jung. All rights reserved.
 //
+// this is a root TableViewVC
+
 
 import UIKit
 import CoreData

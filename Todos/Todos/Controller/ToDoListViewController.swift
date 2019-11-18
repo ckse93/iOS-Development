@@ -35,9 +35,15 @@ class ToDoViewListController: UITableViewController {
        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        cell.textLabel?.text = itemArr[indexPath.row].title
-        cell.accessoryType = itemArr[indexPath.row].isDone ? .checkmark : .none  // ternery statement. if isdone is true, set it to .checkmark, if else, set to none
         
+        cell.accessoryType = itemArr[indexPath.row].isDone ? .checkmark : .none  // ternery statement. if isdone is true, set it to .checkmark, if else, set to none
+        let strikeEffect: [NSAttributedString.Key : Any] = [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.strokeColor: UIColor.black]
+        let attrString : NSAttributedString = NSAttributedString(string: itemArr[indexPath.row].title ?? "", attributes: strikeEffect)
+        if itemArr[indexPath.row].isDone {
+            cell.textLabel?.attributedText = attrString
+        } else {
+            cell.textLabel?.attributedText = NSAttributedString(string: itemArr[indexPath.row].title ?? "")
+        }
         return cell
     }
     
